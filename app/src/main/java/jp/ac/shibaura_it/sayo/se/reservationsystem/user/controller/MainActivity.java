@@ -1,4 +1,4 @@
-package jp.ac.shibaura_it.sayo.se.reservationsystem.user;
+package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import java.util.Locale;
 
@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -128,13 +130,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            // return PlaceholderFragment.newInstance(position + 1);
+
+            if (position == 0) {
+                ReserveListFragment fragment = new ReserveListFragment();
+                return (Fragment)fragment;
+            } else {
+                ReserveCalendarFragment fragment = new ReserveCalendarFragment();
+                return (Fragment)fragment;
+            }
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
