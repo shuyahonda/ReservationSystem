@@ -137,6 +137,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 return (Fragment)fragment;
             } else {
                 ReserveCalendarFragment fragment = new ReserveCalendarFragment();
+//                getSupportFragmentManager().beginTransaction().add(R.id.calendarView,fragment,"calendar").commit();
                 return (Fragment)fragment;
             }
         }
