@@ -10,5 +10,6 @@
     <string name="app_name_jp">会議室予約システム</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_time_select">12月10日（水）</string>
+    <string name="title_activity_reserve_complete">ReserveCompleteActivity</string>
 
 </resources>
