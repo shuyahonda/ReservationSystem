@@ -1,10 +1,14 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 
 public class ReserveCompleteActivity extends ActionBarActivity {
@@ -13,6 +17,7 @@ public class ReserveCompleteActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserve_complete);
+        ButterKnife.inject(this);
     }
 
 
@@ -36,5 +41,13 @@ public class ReserveCompleteActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.detailDecisionButton)
+    public void onClick(View view) {
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 }

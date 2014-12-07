@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="確定"
-        android:id="@+id/button3"
+        android:id="@+id/decisionButton"
         android:layout_gravity="right|center_vertical"
         android:layout_marginRight="5dp" />
 
@@ -19,12 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="left|center_vertical"
-        android:id="@+id/">
+        >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="開始時間"
             android:id="@+id/button"
             style="@android:style/Widget.DeviceDefault.ActionButton" />
 
@@ -38,7 +38,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="終了時間"
             android:id="@+id/button2"
             style="@android:style/Widget.DeviceDefault.ActionButton" />
     </LinearLayout>

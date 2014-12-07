@@ -10,6 +10,13 @@
     <string name="app_name_jp">会議室予約システム</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_time_select">12月10日（水）</string>
-    <string name="title_activity_reserve_complete">ReserveCompleteActivity</string>
+    <string name="title_activity_reserve_complete">予約詳細</string>
 
+
+    <string-array name="spiners">
+        <item>5号館第1会議室(10)</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>yellow</item>
+    </string-array>
 </resources>
