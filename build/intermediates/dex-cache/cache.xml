@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-f663a4e8e680715f89183ca7f96a463d1889a571.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-751780163f8e46cfdf7f15a3334ffba2637419e6.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-57eede37d2db24025585d895abc2d34023ff69bb.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.9/3a5961175b98494b89b7a24ac128e61e64ef7ef6/library-1.0.9.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="3a5961175b98494b89b7a24ac128e61e64ef7ef6">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/library-1.0.9-f2a39474599edc39141be0dfa6500d8b400ae02a.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="3a10b25b6820e19102e118711afe6a66c0bae123">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/butterknife-6.0.0-9f9dc4239795dcd93ec3bfd2c353ef49f4fbc837.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Applications/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1ae9cb19d10f1bde81fe54ca5c66c1f2667fa30d.jar" />
+    </item>
+
+</items>
