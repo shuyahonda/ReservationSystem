@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/cardslib-core/2.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="81d6467247ced8a5d51f8ff73a6595d517eddba6">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-edbf9555b1881f4c8f0e9eac486f2e5b6d0e05de.jar" />
+    </item>
+    <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
         jumboMode="false"
         revision="21.0.2"
@@ -9,11 +16,60 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-f663a4e8e680715f89183ca7f96a463d1889a571.jar" />
     </item>
     <item
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.nhaarman.listviewanimations/lib-core/3.1.0/f3f9629b068554d8513a2aaf34418171bf430851/lib-core-3.1.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="f3f9629b068554d8513a2aaf34418171bf430851">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/lib-core-3.1.0-d5141f66af91e4d2928099dddfd8e900ab3ba3e0.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/cardslib-extra-dragdrop/2.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="c2ccd61dc70f7b1dc968c73626f90a61eb542905">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-e6b6036c06e47f3a4b655a70c5a947817f363343.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/cardslib-extra-staggeredgrid/2.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="53c7b3252488ffcd664c6889d8d536a09ae3ad80">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-c150da223a5d648b10d9dce6685250a894224201.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Applications/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1ae9cb19d10f1bde81fe54ca5c66c1f2667fa30d.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-36b24e0ac6bf0bbebe7ac633fa50c3e2ed248c98.jar" />
+    </item>
+    <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-751780163f8e46cfdf7f15a3334ffba2637419e6.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="7d2525cba8ed61fff102977caed964fc22061e34">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-816990440b3fbcf97ccb113628de4585f99ee056.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="3a10b25b6820e19102e118711afe6a66c0bae123">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/butterknife-6.0.0-9f9dc4239795dcd93ec3bfd2c353ef49f4fbc837.jar" />
     </item>
     <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
@@ -30,18 +86,46 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/library-1.0.9-f2a39474599edc39141be0dfa6500d8b400ae02a.jar" />
     </item>
     <item
-        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.nhaarman.listviewanimations/lib-manipulation/3.1.0/63737e512fcd9e0ebe9bcd0bb375c2dded74116f/lib-manipulation-3.1.0.jar"
         jumboMode="false"
         revision="21.0.2"
-        sha1="3a10b25b6820e19102e118711afe6a66c0bae123">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/butterknife-6.0.0-9f9dc4239795dcd93ec3bfd2c353ef49f4fbc837.jar" />
+        sha1="63737e512fcd9e0ebe9bcd0bb375c2dded74116f">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/lib-manipulation-3.1.0-429369da16281a6be881b54edac02ffcb7a9e0d3.jar" />
     </item>
     <item
-        jar="/Users/Shuya/Applications/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.etsy.android.grid/library/1.0.5/classes.jar"
         jumboMode="false"
         revision="21.0.2"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1ae9cb19d10f1bde81fe54ca5c66c1f2667fa30d.jar" />
+        sha1="8218789edb56bdcfff7da48e892b37460fc707e2">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-76740a7f093f8480bed1246a8fa17569a2245e42.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-74c34a2eb0ed7d024d346494e0bb8f9411616ebf.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/cardslib-cards/2.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="d851788f6c23d14aa5fa8fbfd6d1b17725ad44c5">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-10dd895b2c4ef557bb1f16e4dd3515f1b0122248.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/cardslib-recyclerview/2.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="15d2052aed6aa62f341d22e1ba6177697c7dc552">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-a467b32ef47bd9e79a158d0b7979ee8d0cced5af.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/library-2.4.0-f96d33612e1d9dd9b96dd011a68dd7a429b9b7e5.jar" />
     </item>
 
 </items>
