@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.OnClick;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 
 /**
@@ -27,5 +28,9 @@ public class ReserveListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_reserve_list, container, false);
     }
 
-
+    @OnClick(R.id.dialogTestButton)
+    public void OnClick(View view) {
+        ReserveDetailFragment fragment = new ReserveDetailFragment();
+        fragment.show(this.getFragmentManager(),"test");
+    }
 }
