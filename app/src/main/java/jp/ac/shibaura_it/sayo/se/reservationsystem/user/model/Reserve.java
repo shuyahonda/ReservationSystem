@@ -44,7 +44,7 @@ public class Reserve {
      * @return 削除が成功したかどうか
      */
     public Boolean delete() {
-
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Reserve {
      * @return 登録が成功したかどうか
      */
     public Boolean regist() {
-
+        return false;
     }
 
     /**
@@ -61,12 +61,8 @@ public class Reserve {
      * @return 予約記録に不備がないかどうか
      */
     private Boolean isInputCheckError(){
-
+        return false;
     }
-
-
-
-
 
     // Getter and Setter
 
