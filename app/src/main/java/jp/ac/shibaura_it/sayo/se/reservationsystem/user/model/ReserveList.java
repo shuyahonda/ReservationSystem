@@ -5,6 +5,8 @@ import java.util.Calendar;
 
 /**
  * Created by Shuya on 14/12/10.
+ * 予約記録簿
+ * 予約記録の取得などはこのクラスを通して行う
  */
 public class ReserveList {
     /**
