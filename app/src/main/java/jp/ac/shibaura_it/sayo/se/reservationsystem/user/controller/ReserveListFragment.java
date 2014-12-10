@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
-import jp.ac.shibaura_it.sayo.se.reservationsystem.user.view.ReserveDetailDialogFragment;
 import me.drakeet.materialdialog.MaterialDialog;
 
 /**
