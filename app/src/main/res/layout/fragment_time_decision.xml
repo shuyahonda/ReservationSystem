@@ -1,8 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="50dp"
-    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeDecisionFragment"
-    android:background="#ffe0e0e0">
+    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeDecisionFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -35,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="開始時間"
-            android:id="@+id/button"
+            android:id="@+id/startTimeButton"
             style="@android:style/Widget.DeviceDefault.ActionButton" />
 
         <TextView
@@ -49,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="終了時間"
-            android:id="@+id/button2"
+            android:id="@+id/endTimeButton"
             style="@android:style/Widget.DeviceDefault.ActionButton" />
     </LinearLayout>
 

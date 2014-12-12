@@ -1,5 +1,7 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.model;
 
+import java.util.Calendar;
+
 /**
  * Created by Shuya on 14/12/10.
  * 予約記録
@@ -33,6 +35,18 @@ public class Reserve {
      * 予約の利用者
      */
     private User user;
+
+    /**
+     * 使用開始時間
+     */
+    private Calendar startTime;
+
+    /**
+     * 使用終了時間
+     */
+    private Calendar endTime;
+
+
 
     public void Reserve() {
 
@@ -96,5 +110,21 @@ public class Reserve {
 
     public void setIsManagerCheck(Boolean isManagerCheck) {
         this.isManagerCheck = isManagerCheck;
+    }
+
+    public Calendar getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Calendar startTime) {
+        this.startTime = startTime;
+    }
+
+    public Calendar getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Calendar endTime) {
+        this.endTime = endTime;
     }
 }
