@@ -21,7 +21,9 @@
         android:text="確定"
         android:id="@+id/decisionButton"
         android:layout_gravity="right|center_vertical"
-        android:layout_marginRight="5dp" />
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -36,7 +38,8 @@
             android:text="開始時間"
             android:id="@+id/startTimeButton"
             style="@android:style/Widget.DeviceDefault.ActionButton"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:layout_width="wrap_content"

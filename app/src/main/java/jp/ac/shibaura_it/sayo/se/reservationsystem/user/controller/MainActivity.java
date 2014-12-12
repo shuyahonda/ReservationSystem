@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff009688));
+
         //actionBar.setStackedBackgroundDrawable(new ColorDrawable(0xff009688));
 
 
