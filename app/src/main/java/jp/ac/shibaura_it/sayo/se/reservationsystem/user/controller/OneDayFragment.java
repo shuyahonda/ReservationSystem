@@ -14,7 +14,6 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
  */
 public class OneDayFragment extends Fragment {
 
-
     public OneDayFragment() {
         // Required empty public constructor
     }

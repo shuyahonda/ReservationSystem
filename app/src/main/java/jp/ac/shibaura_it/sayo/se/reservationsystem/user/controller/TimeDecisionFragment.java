@@ -35,10 +35,12 @@ public class TimeDecisionFragment extends Fragment {
         return view;
     }
 
+    /*
     @OnClick(R.id.decisionButton)
     public void OnClick(View view) {
         Intent intent = new Intent(getActivity(),ReserveCompleteActivity.class);
         startActivity(intent);
         Log.d("確定","test");
     }
+    */
 }

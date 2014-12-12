@@ -11,8 +11,10 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 
 public class ReserveCompleteActivity extends ActionBarActivity {
+    private Reserve reserve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,8 @@ public class ReserveCompleteActivity extends ActionBarActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff009688));
 
         ButterKnife.inject(this);
+
+        
     }
 
 

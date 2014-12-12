@@ -102,4 +102,12 @@ public class TimeSelectActivity extends ActionBarActivity {
         dialog.setTitle("使用終了時間");
         dialog.show();
     }
+
+    @OnClick(R.id.decisionButton)
+    public void onDecisionButtonClick(View view) {
+        Log.d("test","test");
+
+        //画面遷移する
+        //開始時間と終了時間を何とかして予約に設定する必要がある
+    }
 }
