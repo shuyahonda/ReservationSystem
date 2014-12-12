@@ -3,6 +3,7 @@ package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;

@@ -2,6 +2,7 @@ package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import java.util.Locale;
 
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xff009688));
+        //actionBar.setStackedBackgroundDrawable(new ColorDrawable(0xff009688));
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

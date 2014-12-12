@@ -1,11 +1,19 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -16,7 +24,6 @@ import me.drakeet.materialdialog.MaterialDialog;
  * A simple {@link Fragment} subclass.
  */
 public class ReserveListFragment extends Fragment {
-
 
     public ReserveListFragment() {
         // Required empty public constructor
@@ -34,24 +41,6 @@ public class ReserveListFragment extends Fragment {
 
     @OnClick(R.id.dialogTestButton)
     public void OnClick(View view) {
-        MaterialDialog mMaterialDialog = new MaterialDialog(this.getActivity())
-                .setTitle("MaterialDialog")
-                .setMessage("Hello world!")
-                .setPositiveButton("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //mMaterialDialog.dismiss();
 
-                    }
-                })
-                .setNegativeButton("CANCEL", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //mMaterialDialog.dismiss();
-
-                    }
-                });
-
-        mMaterialDialog.show();
     }
 }
