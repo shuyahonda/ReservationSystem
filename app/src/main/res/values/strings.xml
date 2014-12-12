@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">ReservationSystemUser</string>
-    <string name="title_section1">予約一覧</string>
+    <string name="title_section1">マイページ</string>
     <string name="title_section2">予約申請</string>
     <string name="title_section3">設定</string>
     <string name="hello_world">Hello world!</string>

@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:text="開始時間"
             android:id="@+id/startTimeButton"
-            style="@android:style/Widget.DeviceDefault.ActionButton" />
+            style="@android:style/Widget.DeviceDefault.ActionButton"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +50,8 @@
             android:layout_height="wrap_content"
             android:text="終了時間"
             android:id="@+id/endTimeButton"
-            style="@android:style/Widget.DeviceDefault.ActionButton" />
+            style="@android:style/Widget.DeviceDefault.ActionButton"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </FrameLayout>
