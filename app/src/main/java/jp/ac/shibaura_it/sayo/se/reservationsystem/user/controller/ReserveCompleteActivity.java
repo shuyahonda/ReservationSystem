@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
@@ -84,10 +85,20 @@ public class ReserveCompleteActivity extends ActionBarActivity {
 
     @OnClick(R.id.detailDecisionButton)
     public void onDecisionClick(View view) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("登録");
+        progressDialog.setMessage("予約情報を登録中です");
+        progressDialog.show();
+
+        //reserve.regist()を実行する
+        //callbackしてprogressDialogを閉じる必要がある
+
+        /*
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+        */
     }
 
     @OnTextChanged(R.id.responsiblePerson)

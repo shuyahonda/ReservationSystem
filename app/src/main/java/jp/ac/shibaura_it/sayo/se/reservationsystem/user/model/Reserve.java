@@ -10,6 +10,17 @@ import java.util.Calendar;
  * @author Shuya
  */
 public class Reserve implements Serializable {
+
+    public interface ReserveCallbacks {
+        public void didRegist(boolean success);
+        public void didDelete(boolean success);
+    }
+
+    /**
+     * Callback
+     */
+    private ReserveCallbacks reserveCallbacks;
+
     /**
      * 使用責任者
      * 利用している人とは別に入力させる
@@ -64,7 +75,7 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 削除が成功したかどうか
      */
-    public Boolean delete() {
+    public Boolean delete(ReserveCallbacks callback) {
         return false;
     }
 
@@ -73,7 +84,10 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 登録が成功したかどうか
      */
-    public Boolean regist() {
+    public Boolean regist(ReserveCallbacks callback) {
+
+
+
         return false;
     }
 
