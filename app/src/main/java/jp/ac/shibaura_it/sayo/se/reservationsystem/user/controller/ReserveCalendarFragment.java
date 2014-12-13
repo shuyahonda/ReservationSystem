@@ -13,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
 
+import java.util.Calendar;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +45,17 @@ public class ReserveCalendarFragment extends Fragment {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 // 日付が選択されたとき画面遷移
                 Intent intent = new Intent(getActivity(),TimeSelectActivity.class);
+                Reserve reserve = new Reserve();
+
+                Calendar startTime = Calendar.getInstance();
+                startTime.set(year,month,dayOfMonth);
+                reserve.setStartTime(startTime);
+
+                Calendar endTime = Calendar.getInstance();
+                endTime.set(year,month,dayOfMonth);
+                reserve.setEndTime(endTime);
+
+                intent.putExtra("reserve",reserve);
                 startActivity(intent);
             }
         });

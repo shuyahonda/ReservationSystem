@@ -31,6 +31,15 @@ public class ReserveCompleteActivity extends ActionBarActivity {
 
         reserve = (Reserve)getIntent().getSerializableExtra("reserve");
 
+
+        //日時を表示
+        TextView useDay = (TextView)findViewById(R.id.useDayTextView);
+        String resYear = String.valueOf(this.reserve.getStartTime().get(Calendar.YEAR));
+        String resMonth = String.valueOf(this.reserve.getStartTime().get(Calendar.MONTH) + 1);
+        String resDay = String.valueOf(this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH));
+
+        useDay.setText(String.format("%s年%s月%s日（%s）",resYear,resMonth,resDay,""));
+
         //使用時間を表示
         TextView useTime = (TextView)findViewById(R.id.useTimeTextView);
         String startTime = String.format("%02d:%02d",reserve.getStartTime().get(Calendar.HOUR_OF_DAY),reserve.getStartTime().get(Calendar.MINUTE));
@@ -41,7 +50,7 @@ public class ReserveCompleteActivity extends ActionBarActivity {
         TextView requestDay = (TextView)findViewById(R.id.requestDayTextView);
         Calendar calendar = Calendar.getInstance();
         String year = String.format("%s",calendar.get(Calendar.YEAR));
-        String month = String.format("%s",calendar.get(Calendar.MONTH));
+        String month = String.format("%s",calendar.get(Calendar.MONTH) + 1);
         String day = String.format("%s",calendar.get(Calendar.DAY_OF_MONTH));
         String dayOfWeek = String.format("%s",calendar.get(Calendar.DAY_OF_WEEK)); //曜日
 

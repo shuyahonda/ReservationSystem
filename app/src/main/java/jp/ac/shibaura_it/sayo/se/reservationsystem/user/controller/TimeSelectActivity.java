@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.support.v7.app.ActionBar;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -28,7 +29,18 @@ public class TimeSelectActivity extends ActionBarActivity {
         setContentView(R.layout.activity_time_select);
         ButterKnife.inject(this);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff009688));
-        reserve = new Reserve();
+
+        Intent intent = getIntent();
+        Reserve reserve = (Reserve)intent.getSerializableExtra("reserve");
+        this.reserve = reserve;
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(
+                String.format("%d年%d月%d日()",
+                        this.reserve.getStartTime().get(Calendar.YEAR),
+                        this.reserve.getStartTime().get(Calendar.MONTH) + 1,
+                        this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
+                ));
     }
 
 
@@ -64,8 +76,10 @@ public class TimeSelectActivity extends ActionBarActivity {
                     public void onTimeSet(TimePicker view,
                                           int hourOfDay, int minute) {
                         // reserveに予約開始時間を設定する
-                        Calendar startTime = Calendar.getInstance();
-                        startTime.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE,hourOfDay,minute);
+                        Calendar startTime = reserve.getStartTime();
+//                        startTime.set(hourOfDay,minute);
+                        startTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        startTime.set(Calendar.MINUTE,minute);
 
                         reserve.setStartTime(startTime);
 
@@ -88,9 +102,10 @@ public class TimeSelectActivity extends ActionBarActivity {
                     public void onTimeSet(TimePicker view,
                                           int hourOfDay, int minute) {
                         // reserveに予約終了時間を設定する
-                        Calendar endTime = Calendar.getInstance();
-                        endTime.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE,hourOfDay,minute);
-
+                        Calendar endTime = reserve.getEndTime();
+//                        endTime.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE,hourOfDay,minute);
+                        endTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        endTime.set(Calendar.MINUTE,minute);
 
                         reserve.setEndTime(endTime);
 
