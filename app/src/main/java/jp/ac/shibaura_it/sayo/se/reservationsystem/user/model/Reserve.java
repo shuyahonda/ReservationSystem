@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Calendar;
  *
  * @author Shuya
  */
-public class Reserve {
+public class Reserve implements Serializable {
     /**
      * 使用責任者
      * 利用している人とは別に入力させる

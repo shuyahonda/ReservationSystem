@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,6 +29,16 @@ public class ReserveCompleteActivity extends ActionBarActivity {
 
         ButterKnife.inject(this);
 
+        reserve = (Reserve)getIntent().getSerializableExtra("reserve");
+
+        //使用時間を表示
+        TextView useTime = (TextView)findViewById(R.id.useTimeTextView);
+        String startTime = String.format("%02d:%02d",reserve.getStartTime().get(Calendar.HOUR_OF_DAY),reserve.getStartTime().get(Calendar.MINUTE));
+        String endTime = String.format("%02d:%02d",reserve.getEndTime().get(Calendar.HOUR_OF_DAY),reserve.getEndTime().get(Calendar.MINUTE));
+        useTime.setText(String.format("%s ~ %s",startTime,endTime));
+
+        //申請日を表示
+        TextView requestDay = (TextView)findViewById(R.id.requestDayTextView);
         
     }
 

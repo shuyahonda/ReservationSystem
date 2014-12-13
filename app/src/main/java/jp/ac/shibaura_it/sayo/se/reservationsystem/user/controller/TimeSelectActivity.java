@@ -1,6 +1,7 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -90,6 +91,7 @@ public class TimeSelectActivity extends ActionBarActivity {
                         Calendar endTime = Calendar.getInstance();
                         endTime.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE,hourOfDay,minute);
 
+
                         reserve.setEndTime(endTime);
 
                         Button endTimeButton = (Button)findViewById(R.id.endTimeButton);
@@ -109,5 +111,9 @@ public class TimeSelectActivity extends ActionBarActivity {
 
         //画面遷移する
         //開始時間と終了時間を何とかして予約に設定する必要がある
+
+        Intent intent = new Intent(this,ReserveCompleteActivity.class);
+        intent.putExtra("reserve",reserve);
+        startActivity(intent);
     }
 }
