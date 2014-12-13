@@ -39,7 +39,13 @@ public class ReserveCompleteActivity extends ActionBarActivity {
 
         //申請日を表示
         TextView requestDay = (TextView)findViewById(R.id.requestDayTextView);
-        
+        Calendar calendar = Calendar.getInstance();
+        String year = String.format("%s",calendar.get(Calendar.YEAR));
+        String month = String.format("%s",calendar.get(Calendar.MONTH));
+        String day = String.format("%s",calendar.get(Calendar.DAY_OF_MONTH));
+        String dayOfWeek = String.format("%s",calendar.get(Calendar.DAY_OF_WEEK)); //曜日
+
+        requestDay.setText(String.format("%s年%s月%s日（%s）",year,month,day,""));
     }
 
 
