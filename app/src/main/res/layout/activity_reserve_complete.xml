@@ -105,7 +105,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/responsiblePerson"
                 android:hint="使用責任者の名前(フルネーム)"
                 android:maxLines="1"
                 android:layout_marginLeft="12dp"
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:id="@+id/responsiblePersonContact"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="-10dp"
@@ -150,7 +150,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText3"
+                android:id="@+id/purpose"
                 android:hint="使用目的"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="15dp"

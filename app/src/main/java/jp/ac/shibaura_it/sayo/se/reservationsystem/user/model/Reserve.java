@@ -48,6 +48,12 @@ public class Reserve implements Serializable {
     private Calendar endTime;
 
 
+    /**
+     * 使用目的
+     */
+
+    private String purpose;
+
 
     public void Reserve() {
 
@@ -127,5 +133,13 @@ public class Reserve implements Serializable {
 
     public void setEndTime(Calendar endTime) {
         this.endTime = endTime;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
     }
 }

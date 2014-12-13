@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -15,6 +16,7 @@ import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 
@@ -81,10 +83,25 @@ public class ReserveCompleteActivity extends ActionBarActivity {
     }
 
     @OnClick(R.id.detailDecisionButton)
-    public void onClick(View view) {
+    public void onDecisionClick(View view) {
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+    }
+
+    @OnTextChanged(R.id.responsiblePerson)
+    public void responsiblePersonChanged(CharSequence s, int start, int before, int count) {
+        this.reserve.setResponsiblePerson(s.toString());
+    }
+
+    @OnTextChanged(R.id.responsiblePersonContact)
+    public void responsiblePersonContactChanged(CharSequence s, int start, int before, int count) {
+        this.reserve.setResponsiblePersonContact(s.toString());
+    }
+
+    @OnTextChanged(R.id.purpose)
+    public void purposeChanged(CharSequence s, int start, int before, int count) {
+        this.reserve.setPurpose(s.toString());
     }
 }
