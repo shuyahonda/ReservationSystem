@@ -36,7 +36,7 @@ public class TimeSelectActivity extends ActionBarActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(
-                String.format("%d年%d月%d日()",
+                String.format("%d年%d月%d日（）",
                         this.reserve.getStartTime().get(Calendar.YEAR),
                         this.reserve.getStartTime().get(Calendar.MONTH) + 1,
                         this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
