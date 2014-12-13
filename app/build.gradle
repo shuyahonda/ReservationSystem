@@ -32,6 +32,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.mcxiaoke.volley:library:1.0.+'
     compile 'me.drakeet.materialdialog:library:1.2.2'
+    compile 'com.loopj.android:android-async-http:1.4.5'
 
     //Core card library
     compile 'com.github.gabrielemariotti.cards:library:1.9.1'

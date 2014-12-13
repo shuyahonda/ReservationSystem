@@ -21,8 +21,9 @@ import butterknife.OnTextChanged;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 
-public class ReserveCompleteActivity extends ActionBarActivity {
+public class ReserveCompleteActivity extends ActionBarActivity implements Reserve.ReserveCallbacks {
     private Reserve reserve;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class ReserveCompleteActivity extends ActionBarActivity {
         ButterKnife.inject(this);
 
         reserve = (Reserve)getIntent().getSerializableExtra("reserve");
-
+        progressDialog = new ProgressDialog(this);
 
         //日時を表示
         TextView useDay = (TextView)findViewById(R.id.useDayTextView);
@@ -85,13 +86,14 @@ public class ReserveCompleteActivity extends ActionBarActivity {
 
     @OnClick(R.id.detailDecisionButton)
     public void onDecisionClick(View view) {
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("登録");
-        progressDialog.setMessage("予約情報を登録中です");
-        progressDialog.show();
+        this.progressDialog.setTitle("登録");
+        this.progressDialog.setMessage("予約情報を登録中です");
+        this.progressDialog.show();
 
         //reserve.regist()を実行する
         //callbackしてprogressDialogを閉じる必要がある
+        this.reserve.regist(this);
+
 
         /*
         Intent intent = new Intent(this,MainActivity.class);
@@ -99,6 +101,14 @@ public class ReserveCompleteActivity extends ActionBarActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
         */
+    }
+
+    public void didRegist(boolean success) {
+        this.progressDialog.dismiss();
+    }
+
+    public void didDelete(boolean success) {
+
     }
 
     @OnTextChanged(R.id.responsiblePerson)

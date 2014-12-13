@@ -75,8 +75,7 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 削除が成功したかどうか
      */
-    public Boolean delete(ReserveCallbacks callback) {
-        return false;
+    public void delete(ReserveCallbacks callback) {
     }
 
     /**
@@ -84,11 +83,8 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 登録が成功したかどうか
      */
-    public Boolean regist(ReserveCallbacks callback) {
-
-
-
-        return false;
+    public void regist(ReserveCallbacks callback) {
+        String url = "http://localhost:8080/rs/reserve";
     }
 
     /**
