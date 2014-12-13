@@ -77,7 +77,6 @@ public class TimeSelectActivity extends ActionBarActivity {
                                           int hourOfDay, int minute) {
                         // reserveに予約開始時間を設定する
                         Calendar startTime = reserve.getStartTime();
-//                        startTime.set(hourOfDay,minute);
                         startTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
                         startTime.set(Calendar.MINUTE,minute);
 
@@ -103,7 +102,6 @@ public class TimeSelectActivity extends ActionBarActivity {
                                           int hourOfDay, int minute) {
                         // reserveに予約終了時間を設定する
                         Calendar endTime = reserve.getEndTime();
-//                        endTime.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE,hourOfDay,minute);
                         endTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
                         endTime.set(Calendar.MINUTE,minute);
 
@@ -122,11 +120,6 @@ public class TimeSelectActivity extends ActionBarActivity {
 
     @OnClick(R.id.decisionButton)
     public void onDecisionButtonClick(View view) {
-        Log.d("test","test");
-
-        //画面遷移する
-        //開始時間と終了時間を何とかして予約に設定する必要がある
-
         Intent intent = new Intent(this,ReserveCompleteActivity.class);
         intent.putExtra("reserve",reserve);
         startActivity(intent);
