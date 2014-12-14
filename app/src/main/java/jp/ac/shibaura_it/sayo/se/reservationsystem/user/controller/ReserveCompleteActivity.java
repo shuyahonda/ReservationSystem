@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,11 +90,11 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         this.progressDialog.setTitle("登録");
         this.progressDialog.setMessage("予約情報を登録中です");
         this.progressDialog.show();
+        Log.d("onDecisionClick","test");
 
         //reserve.regist()を実行する
         //callbackしてprogressDialogを閉じる必要がある
         this.reserve.regist(this);
-
 
         /*
         Intent intent = new Intent(this,MainActivity.class);
@@ -104,7 +105,12 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
     }
 
     public void didRegist(boolean success) {
-        this.progressDialog.dismiss();
+        //this.progressDialog.dismiss();
+        if (success) {
+            Log.d("test","通信に成功しました");
+        } else {
+            Log.d("test","通信に失敗しました");
+        }
     }
 
     public void didDelete(boolean success) {

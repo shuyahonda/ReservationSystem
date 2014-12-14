@@ -1,6 +1,23 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.model;
 
+import android.app.Notification;
+import android.content.Context;
+import android.util.Log;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.apache.http.Header;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 
 /**
@@ -83,9 +100,56 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 登録が成功したかどうか
      */
-    public void regist(ReserveCallbacks callback) {
-        String url = "http://localhost:8080/rs/reserve";
+    public void regist(final ReserveCallbacks callback) {
+        String url = "http://10.0.2.2:8080/rs/reserve/test";
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("key","test");
+
+        JSONObject jsonParams = new JSONObject();
+        StringEntity entity = null;
+        try {
+            jsonParams.put("key", "value");
+        } catch (JSONException ex) {
+
+        }
+        try {
+            entity = new StringEntity(jsonParams.toString());
+        } catch (UnsupportedEncodingException ex) {
+
+        }
+        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+
+        client.post(null, url, entity, "application/json",
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                });
+/*
+        client.post(url,entity,new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.d("通信","成功");
+                callback.didRegist(true);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Log.d("通信","失敗");
+                callback.didRegist(false);
+            }
+        });
+        */
     }
+
 
     /**
      * 予約記録をサーバに登録するために必要な情報が全て登録されているか判定する

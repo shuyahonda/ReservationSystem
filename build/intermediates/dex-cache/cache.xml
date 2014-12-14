@@ -23,18 +23,11 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1ae9cb19d10f1bde81fe54ca5c66c1f2667fa30d.jar" />
     </item>
     <item
-        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.9.1/classes.jar"
+        jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
         jumboMode="false"
         revision="21.0.2"
-        sha1="a64671bd87b29748d87865871cc95147b89a2192">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-17f229daad1d0acb4c75c29bf065a7aab452561d.jar" />
-    </item>
-    <item
-        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
-        jumboMode="false"
-        revision="21.0.2"
-        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-74c34a2eb0ed7d024d346494e0bb8f9411616ebf.jar" />
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-a8a72d5201050d6f9f25dd6b97f183e7cd5f5c67.jar" />
     </item>
     <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
@@ -65,11 +58,25 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/library-1.0.9-f2a39474599edc39141be0dfa6500d8b400ae02a.jar" />
     </item>
     <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.9.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="a64671bd87b29748d87865871cc95147b89a2192">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-17f229daad1d0acb4c75c29bf065a7aab452561d.jar" />
+    </item>
+    <item
         jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.nhaarman.listviewanimations/lib-manipulation/3.1.0/63737e512fcd9e0ebe9bcd0bb375c2dded74116f/lib-manipulation-3.1.0.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="63737e512fcd9e0ebe9bcd0bb375c2dded74116f">
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/lib-manipulation-3.1.0-429369da16281a6be881b54edac02ffcb7a9e0d3.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-74c34a2eb0ed7d024d346494e0bb8f9411616ebf.jar" />
     </item>
     <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.etsy.android.grid/library/1.0.5/classes.jar"
