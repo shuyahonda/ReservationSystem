@@ -64,7 +64,6 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         requestDay.setText(String.format("%s年%s月%s日（%s）",year,month,day,""));
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -92,16 +91,7 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         this.progressDialog.setTitle("登録");
         this.progressDialog.setMessage("予約情報を登録中です");
         this.progressDialog.show();
-        Log.d("onDecisionClick","test");
-
         this.reserve.regist(this);
-
-        /*
-        Intent intent = new Intent(this,MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
-        */
     }
 
     public void didRegist(boolean success) {
@@ -133,7 +123,6 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
-
 
     public void didDelete(boolean success) {
 
