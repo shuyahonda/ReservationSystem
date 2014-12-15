@@ -1,12 +1,8 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.model;
 
-import android.app.Notification;
-import android.content.Context;
 import android.util.Log;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
@@ -19,6 +15,8 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
+
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
 /**
  * Created by Shuya on 14/12/10.
@@ -75,16 +73,18 @@ public class Reserve implements Serializable {
      */
     private Calendar endTime;
 
+    /**
+     * 申請日
+     */
+    private Calendar requestDay = Calendar.getInstance();
 
     /**
      * 使用目的
      */
-
     private String purpose;
 
 
     public void Reserve() {
-
     }
 
     /**
@@ -104,8 +104,6 @@ public class Reserve implements Serializable {
         String url = "http://10.0.2.2:8080/rs/reserve/test";
 
         AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.put("key","test");
 
         JSONObject jsonParams = new JSONObject();
         StringEntity entity = null;
@@ -115,26 +113,26 @@ public class Reserve implements Serializable {
             jsonParams.put("responsiblePerson", this.getResponsiblePerson());
             jsonParams.put("contactOfresponsiblePerson", this.getResponsiblePersonContact());
             jsonParams.put("isManagerCheck", "false");
-            jsonParams.put("peopleNum", 0);
-            jsonParams.put("room","5号館第1会議室");
+            jsonParams.put("peopleNum", 0); //まだできていないので固定
+            jsonParams.put("room","5号館第1会議室"); //まだできていないので固定
 
+            jsonParams.put("requestDay", Utility.formatDateJsonStyle(this.requestDay));
+
+            //時間を整形して渡す必要がある
             JSONObject time = new JSONObject();
-            time.put("start","2013/12/24 10:00"); // 2013/12/24 10:00
-            time.put("end","2013/12/24 12:00");   // 2013/12/24 12:00
-
+            time.put("start",Utility.formatDateJsonStyle(this.startTime));
+            time.put("end",Utility.formatDateJsonStyle(this.endTime));
             jsonParams.put("time",time);
 
             JSONObject user = new JSONObject();
-            //ユーザー情報を保持する部分ができていない
+            //ユーザー情報を保持する部分ができていない（後回しにして固定）
             user.put("lastName","本田");
             user.put("firstName","修也");
             user.put("mailAddress","bp12110@shibaura-it.ac.jp");
             user.put("affiliation","申請者");
-
             jsonParams.put("user",user);
 
             entity = new StringEntity(jsonParams.toString());
-
         } catch (JSONException ex) {
 
         } catch (UnsupportedEncodingException ex) {
@@ -224,4 +222,13 @@ public class Reserve implements Serializable {
     public void setPurpose(String purpose) {
         this.purpose = purpose;
     }
+
+    public Calendar getRequestDay() {
+        return requestDay;
+    }
+
+    public void setRequestDay(Calendar requestDay) {
+        this.requestDay = requestDay;
+    }
+
 }

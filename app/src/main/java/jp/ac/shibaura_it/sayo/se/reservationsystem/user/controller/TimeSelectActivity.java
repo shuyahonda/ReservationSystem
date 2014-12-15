@@ -79,10 +79,7 @@ public class TimeSelectActivity extends ActionBarActivity {
                         Calendar startTime = reserve.getStartTime();
                         startTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
                         startTime.set(Calendar.MINUTE,minute);
-
                         reserve.setStartTime(startTime);
-
-
                         Button startTimeButton = (Button)findViewById(R.id.startTimeButton);
                         startTimeButton.setText(String.valueOf(hourOfDay) + ":" + String.format("%02d",minute));
                     }
