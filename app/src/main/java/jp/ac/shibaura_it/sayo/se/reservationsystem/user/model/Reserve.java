@@ -98,7 +98,7 @@ public class Reserve implements Serializable {
     /**
      * 予約記録をサーバに登録する
      * サーバと通信する
-     * @return 登録が成功したかどうか
+     * 通信終了時にcallback
      */
     public void regist(final ReserveCallbacks callback) {
         String url = "http://10.0.2.2:8080/rs/reserve/test";
@@ -117,6 +117,21 @@ public class Reserve implements Serializable {
             jsonParams.put("isManagerCheck", "false");
             jsonParams.put("peopleNum", 0);
             jsonParams.put("room","5号館第1会議室");
+
+            JSONObject time = new JSONObject();
+            time.put("start","2013/12/24 10:00"); // 2013/12/24 10:00
+            time.put("end","2013/12/24 12:00");   // 2013/12/24 12:00
+
+            jsonParams.put("time",time);
+
+            JSONObject user = new JSONObject();
+            //ユーザー情報を保持する部分ができていない
+            user.put("lastName","本田");
+            user.put("firstName","修也");
+            user.put("mailAddress","bp12110@shibaura-it.ac.jp");
+            user.put("affiliation","申請者");
+
+            jsonParams.put("user",user);
 
             entity = new StringEntity(jsonParams.toString());
 
