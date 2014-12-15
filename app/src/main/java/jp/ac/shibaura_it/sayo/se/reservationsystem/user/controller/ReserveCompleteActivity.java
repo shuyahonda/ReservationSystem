@@ -1,6 +1,8 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
@@ -22,7 +24,7 @@ import butterknife.OnTextChanged;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 
-public class ReserveCompleteActivity extends ActionBarActivity implements Reserve.ReserveCallbacks {
+public class ReserveCompleteActivity extends ActionBarActivity implements Reserve.ReserveCallbacks, DialogInterface.OnClickListener {
     private Reserve reserve;
     private ProgressDialog progressDialog;
 
@@ -92,8 +94,6 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         this.progressDialog.show();
         Log.d("onDecisionClick","test");
 
-        //reserve.regist()を実行する
-        //callbackしてprogressDialogを閉じる必要がある
         this.reserve.regist(this);
 
         /*
@@ -105,13 +105,35 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
     }
 
     public void didRegist(boolean success) {
-        //this.progressDialog.dismiss();
+        this.progressDialog.dismiss();
+
         if (success) {
             Log.d("test","通信に成功しました");
+
+            new AlertDialog.Builder(this)
+                    .setTitle("確認")
+                    .setMessage("予約登録が完了しました")
+                    .setPositiveButton("OK", this)
+                    .show();
+
         } else {
             Log.d("test","通信に失敗しました");
+
+            new AlertDialog.Builder(this)
+                    .setTitle("確認")
+                    .setMessage("予約登録することができませんでした")
+                    .setPositiveButton("OK", this)
+                    .show();
         }
     }
+
+    public void onClick(DialogInterface i, int hoge) {
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
+
 
     public void didDelete(boolean success) {
 

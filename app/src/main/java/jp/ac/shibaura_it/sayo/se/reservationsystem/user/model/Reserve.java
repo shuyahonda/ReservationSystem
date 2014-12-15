@@ -109,47 +109,40 @@ public class Reserve implements Serializable {
 
         JSONObject jsonParams = new JSONObject();
         StringEntity entity = null;
+
         try {
-            jsonParams.put("key", "value");
+            //パラメータ設定
+            jsonParams.put("responsiblePerson", this.getResponsiblePerson());
+            jsonParams.put("contactOfresponsiblePerson", this.getResponsiblePersonContact());
+            jsonParams.put("isManagerCheck", "false");
+            jsonParams.put("peopleNum", 0);
+            jsonParams.put("room","5号館第1会議室");
+
+            entity = new StringEntity(jsonParams.toString());
+
         } catch (JSONException ex) {
 
-        }
-        try {
-            entity = new StringEntity(jsonParams.toString());
         } catch (UnsupportedEncodingException ex) {
 
         }
+
         entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
 
         client.post(null, url, entity, "application/json",
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
+                        Log.d("Reserve.regist()","登録に成功しました");
+                        callback.didRegist(true);
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Log.d("Reserve.regist()","登録に失敗しました");
+                        callback.didRegist(false);
                     }
                 });
-/*
-        client.post(url,entity,new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Log.d("通信","成功");
-                callback.didRegist(true);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("通信","失敗");
-                callback.didRegist(false);
-            }
-        });
-        */
     }
-
 
     /**
      * 予約記録をサーバに登録するために必要な情報が全て登録されているか判定する
