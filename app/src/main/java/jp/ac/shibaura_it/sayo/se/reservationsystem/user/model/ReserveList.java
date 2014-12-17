@@ -1,5 +1,7 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.model;
 
+import com.loopj.android.http.AsyncHttpClient;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -13,6 +15,11 @@ public class ReserveList {
      * このクラス内のメソッドはすべてこのリストを更新する
      */
     private ArrayList<Reserve> reserves;
+
+    /**
+     * 通信用
+     */
+    private AsyncHttpClient client;
 
     public void ReserveList() {
 
@@ -46,6 +53,12 @@ public class ReserveList {
      * @param user
      */
     public void fetchAllReserve(User user) {
+
+        //メールアドレスの保存が出来ていないので固定
+        final String MAIL_ADDRESS = "bp12110@shibaura-it.acjp";
+
+
+
 
     }
 }

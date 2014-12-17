@@ -101,7 +101,8 @@ public class Reserve implements Serializable {
      * 通信終了時にcallback
      */
     public void regist(final ReserveCallbacks callback) {
-        String url = "http://10.0.2.2:8080/rs/reserve/test";
+        //String url = "http://10.0.2.2:8080/rs/reserve/test";
+        String url = "http://172.30.49.149:8080/rs/reserve/test";
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -120,8 +121,8 @@ public class Reserve implements Serializable {
 
             //時間を整形して渡す必要がある
             JSONObject time = new JSONObject();
-            time.put("start",Utility.formatDateJsonStyle(this.startTime));
-            time.put("end",Utility.formatDateJsonStyle(this.endTime));
+            time.put("start", Utility.formatDateJsonStyle(this.startTime));
+            time.put("end", Utility.formatDateJsonStyle(this.endTime));
             jsonParams.put("time",time);
 
             JSONObject user = new JSONObject();
@@ -132,7 +133,7 @@ public class Reserve implements Serializable {
             user.put("affiliation","申請者");
             jsonParams.put("user",user);
 
-            entity = new StringEntity(jsonParams.toString());
+            entity = new StringEntity(jsonParams.toString(),"UTF-8");
         } catch (JSONException ex) {
 
         } catch (UnsupportedEncodingException ex) {

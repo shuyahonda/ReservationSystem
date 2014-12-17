@@ -118,10 +118,12 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
     }
 
     public void onClick(DialogInterface i, int hoge) {
+        /*
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+        */
     }
 
     public void didDelete(boolean success) {
