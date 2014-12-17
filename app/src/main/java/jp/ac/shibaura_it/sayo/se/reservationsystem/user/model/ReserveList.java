@@ -57,7 +57,7 @@ public class ReserveList {
         //メールアドレスの保存が出来ていないので固定
         final String MAIL_ADDRESS = "bp12110@shibaura-it.acjp";
 
-
+        this.client.get(null,)
 
 
     }
