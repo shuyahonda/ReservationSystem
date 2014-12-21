@@ -127,6 +127,7 @@ public class ReserveList {
             reserve.setResponsiblePersonContact(jsonObject.getString("contactOfResponsiblePerson"));
             reserve.setRoom(jsonObject.getString("room"));
             reserve.setRequestDayString(jsonObject.getString("requestDay"));
+            reserve.setPurpose(jsonObject.getString("purpose"));
 
             JSONObject user = jsonObject.getJSONObject("user");
             reserve.setUser(new User(user.getString("mailAddress"), user.getString("affiliation"), user.getString("lastName"), user.getString("firstName")));
@@ -135,7 +136,7 @@ public class ReserveList {
             reserve.setStartTimeString(time.getString("start"));
             reserve.setEndTimeString(time.getString("end"));
         } catch (JSONException ex) {
-
+            ex.printStackTrace();
         }
     }
 

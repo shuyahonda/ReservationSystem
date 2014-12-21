@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
@@ -27,6 +28,9 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 public class ReserveCompleteActivity extends ActionBarActivity implements Reserve.ReserveCallbacks, DialogInterface.OnClickListener {
     private Reserve reserve;
     private ProgressDialog progressDialog;
+
+    @InjectView(R.id.purpose)
+    public EditText purposeEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,8 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         this.progressDialog.setTitle("登録");
         this.progressDialog.setMessage("予約情報を登録中です");
         this.progressDialog.show();
+
+        this.reserve.setPurpose(this.purposeEditText.getText().toString());
         this.reserve.regist(this);
     }
 
@@ -118,12 +124,10 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
     }
 
     public void onClick(DialogInterface i, int hoge) {
-        /*
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
-        */
     }
 
     public void didDelete(boolean success) {

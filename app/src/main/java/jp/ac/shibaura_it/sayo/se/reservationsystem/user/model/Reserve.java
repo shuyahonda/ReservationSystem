@@ -109,8 +109,8 @@ public class Reserve implements Serializable {
      * 通信終了時にcallback
      */
     public void regist(final ReserveCallbacks callback) {
-        //String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
-        String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
+        String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
+        //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -120,10 +120,11 @@ public class Reserve implements Serializable {
         try {
             //パラメータ設定
             jsonParams.put("responsiblePerson", this.getResponsiblePerson());
-            jsonParams.put("contactOfresponsiblePerson", this.getResponsiblePersonContact());
+            jsonParams.put("contactOfResponsiblePerson", this.getResponsiblePersonContact());
             jsonParams.put("isManagerCheck", "false");
             jsonParams.put("peopleNum", 0); //まだできていないので固定
             jsonParams.put("room","5号館第1会議室"); //まだできていないので固定
+            jsonParams.put("purpose",this.getPurpose());
 
             jsonParams.put("requestDay", Utility.formatDateJsonStyle(this.requestDay));
 
@@ -212,6 +213,10 @@ public class Reserve implements Serializable {
         return startTime;
     }
 
+    public String getStartTimeHourOnly () {
+        return String.format("%d:%02d",this.startTime.get(Calendar.HOUR_OF_DAY),this.startTime.get(Calendar.MINUTE));
+    }
+
     public void setStartTime(Calendar startTime) {
         this.startTime = startTime;
     }
@@ -236,6 +241,10 @@ public class Reserve implements Serializable {
         return endTime;
     }
 
+    public String getEndTimeHourOnly() {
+        return String.format("%d:%02d",this.endTime.get(Calendar.HOUR_OF_DAY),this.endTime.get(Calendar.MINUTE));
+    }
+
     public void setEndTime(Calendar endTime) {
         this.endTime = endTime;
     }
@@ -253,15 +262,11 @@ public class Reserve implements Serializable {
             e.printStackTrace();
         }
 
-        this.startTime = cal;
+        this.endTime = cal;
     }
 
     public String getPurpose() {
-        if (purpose == null) {
-            return "未記入";
-        } else {
-            return purpose;
-        }
+        return purpose;
     }
 
     public void setPurpose(String purpose) {

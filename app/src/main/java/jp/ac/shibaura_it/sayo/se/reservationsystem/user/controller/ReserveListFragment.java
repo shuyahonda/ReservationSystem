@@ -65,7 +65,6 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
     }
 
     public void finishedReserveFetch(boolean success) {
-        //this.progressDialog.dismiss();
         Log.i("ReserveListFragment.finishedReserveFetch()", "予約の読込が終了しました");
         mCards.clear();
 
@@ -77,5 +76,7 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
             Card card = new ReserveCard(getActivity(), mReserveList.get(i));
             mCards.add(card);
         }
+
+        this.progressDialog.dismiss();
     }
 }

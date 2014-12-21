@@ -1,15 +1,13 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.view;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.util.Calendar;
 
-import butterknife.InjectView;
 import it.gmariotti.cardslib.library.internal.Card;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
@@ -56,9 +54,15 @@ public class ReserveCard extends Card {
         this.reserveCardRoom = (TextView)parent.findViewById(R.id.reserveCardRoom);
 
         this.reserveCardPurpose.setText(this.reserve.getPurpose());
-        //this.reserveCardRoom.setText(this.reserve.getRoom());
-        //this.reserveCardDay.setText(this.reserve.getStartTime().toString());
-        //this.reserveCardDay.setText(this.reserve.getStartTime().toString());
+        this.reserveCardRoom.setText(this.reserve.getRoom());
+        this.reserveCardTime.setText(this.reserve.getStartTimeHourOnly() + " 〜 " + this.reserve.getEndTimeHourOnly());
+
+
+        this.reserveCardDay.setText(String.format("%d年%d月%02d日（）",
+                this.reserve.getStartTime().get(Calendar.YEAR),
+                this.reserve.getStartTime().get(Calendar.MONTH) + 1,
+                this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
+        ));
     }
 
 }
