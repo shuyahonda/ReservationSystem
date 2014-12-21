@@ -208,12 +208,20 @@ public class Reserve implements Serializable {
         this.startTime = startTime;
     }
 
+    public void setStartTimeString(String startTime) {
+
+    }
+
     public Calendar getEndTime() {
         return endTime;
     }
 
     public void setEndTime(Calendar endTime) {
         this.endTime = endTime;
+    }
+
+    public void setEndTimeString(String endTime) {
+
     }
 
     public String getPurpose() {
@@ -230,6 +238,10 @@ public class Reserve implements Serializable {
 
     public void setRequestDay(Calendar requestDay) {
         this.requestDay = requestDay;
+    }
+
+    public void setRequestDayString(String requestDay) {
+
     }
 
 }
