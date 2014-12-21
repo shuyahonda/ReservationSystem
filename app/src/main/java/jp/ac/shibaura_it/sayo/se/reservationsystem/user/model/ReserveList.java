@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Objects;
 
+
 /**
  * Created by Shuya on 14/12/10.
  * 予約記録簿
@@ -55,7 +56,7 @@ public class ReserveList {
      *
      * @param calendar
      */
-    public void fetchAllReserve(Calendar calendar) {
+    public void fetchAllReserve(int year, int month, int day) {
 
     }
 
@@ -66,7 +67,7 @@ public class ReserveList {
      * @param calendar
      * @param roomName
      */
-    public void fetchAllReserve(Calendar calendar, String roomName) {
+    public void fetchAllReserve(int year, int month, int day, String roomName) {
 
     }
 
@@ -84,7 +85,7 @@ public class ReserveList {
         RequestParams params = new RequestParams();
         params.put("mailAddress",MAIL_ADDRESS);
 
-        this.client.get(BASE_URL + URL,params,new AsyncHttpResponseHandler() {
+        this.client.get(BASE_URL + URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
@@ -115,8 +116,6 @@ public class ReserveList {
                 callback.finishedReserveFetch(false);
             }
         });
-
-
     }
 
     private void initJsonObjectToReserve(JSONObject jsonObject, Reserve reserve) {
@@ -125,6 +124,15 @@ public class ReserveList {
             reserve.setIsManagerCheck(jsonObject.getBoolean("isManagerCheck"));
             reserve.setPeopleNum(jsonObject.getInt("peopleNum"));
             reserve.setResponsiblePersonContact(jsonObject.getString("contactOfResponsiblePerson"));
+            reserve.setRoom(jsonObject.getString("room"));
+            reserve.setRequestDayString(jsonObject.getString("requestDay"));
+
+            JSONObject user = jsonObject.getJSONObject("user");
+            reserve.setUser(new User(user.getString("mailAddress"), user.getString("affiliation"), user.getString("lastName"), user.getString("firstName")));
+
+            JSONObject time = jsonObject.getJSONObject("time");
+            reserve.setStartTimeString(time.getString("start"));
+            reserve.setEndTimeString(time.getString("end"));
         } catch (JSONException ex) {
 
         }
@@ -132,5 +140,9 @@ public class ReserveList {
 
     public int length() {
         return this.reserves.size();
+    }
+
+    public Reserve get(int index) {
+        return this.reserves.get(index);
     }
 }

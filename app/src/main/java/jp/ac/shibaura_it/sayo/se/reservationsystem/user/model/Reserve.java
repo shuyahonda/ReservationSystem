@@ -58,6 +58,14 @@ public class Reserve implements Serializable {
      */
     private Boolean isManagerCheck;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     /**
      * 予約の利用者
      */
@@ -82,6 +90,11 @@ public class Reserve implements Serializable {
      * 使用目的
      */
     private String purpose;
+
+    /**
+     * 使用会議室
+     */
+    private String room;
 
 
     public void Reserve() {
@@ -244,4 +257,11 @@ public class Reserve implements Serializable {
 
     }
 
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
 }
