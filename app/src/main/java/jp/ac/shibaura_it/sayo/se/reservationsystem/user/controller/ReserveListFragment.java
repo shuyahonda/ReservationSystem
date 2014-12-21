@@ -74,7 +74,7 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
 
         for (int i = 0; i < mReserveList.length(); i++) {
             Log.i("ReserveListFragment.finishedReserveFetch()","予約をリストに追加しました");
-            Card card = new ReserveCard(getActivity());
+            Card card = new ReserveCard(getActivity(), mReserveList.get(i));
             mCards.add(card);
         }
     }

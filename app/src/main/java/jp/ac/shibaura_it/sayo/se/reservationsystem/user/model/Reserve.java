@@ -257,7 +257,11 @@ public class Reserve implements Serializable {
     }
 
     public String getPurpose() {
-        return purpose;
+        if (purpose == null) {
+            return "未記入";
+        } else {
+            return purpose;
+        }
     }
 
     public void setPurpose(String purpose) {
