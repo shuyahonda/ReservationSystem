@@ -79,6 +79,7 @@ public class ReserveList {
      */
     public void fetchAllReserve(final ReserveListCallbacks callback, User user) {
         final String URL = "/my";
+        this.reserves.clear();
         //メールアドレスの保存が出来ていないので固定
         final String MAIL_ADDRESS = "bp12110@shibaura-it.ac.jp";
 
@@ -144,5 +145,9 @@ public class ReserveList {
 
     public Reserve get(int index) {
         return this.reserves.get(index);
+    }
+
+    public ArrayList<Reserve> getReserves () {
+        return this.reserves;
     }
 }
