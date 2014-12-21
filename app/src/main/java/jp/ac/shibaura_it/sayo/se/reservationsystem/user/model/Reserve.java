@@ -14,7 +14,10 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
@@ -57,14 +60,6 @@ public class Reserve implements Serializable {
      * 学事課がチェック済みかどうか
      */
     private Boolean isManagerCheck;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     /**
      * 予約の利用者
@@ -222,7 +217,19 @@ public class Reserve implements Serializable {
     }
 
     public void setStartTimeString(String startTime) {
+        // string format -> 2014/12/17 01:18:25
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date;
 
+        try {
+            date = sdf.parse(startTime);
+            cal.setTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.startTime = cal;
     }
 
     public Calendar getEndTime() {
@@ -234,7 +241,19 @@ public class Reserve implements Serializable {
     }
 
     public void setEndTimeString(String endTime) {
+        // string format -> 2014/12/17 01:18:25
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date;
 
+        try {
+            date = sdf.parse(endTime);
+            cal.setTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.startTime = cal;
     }
 
     public String getPurpose() {
@@ -254,7 +273,19 @@ public class Reserve implements Serializable {
     }
 
     public void setRequestDayString(String requestDay) {
+        // string format -> 2014/12/17 01:18:25
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date;
 
+        try {
+            date = sdf.parse(requestDay);
+            cal.setTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.startTime = cal;
     }
 
     public String getRoom() {
@@ -263,5 +294,13 @@ public class Reserve implements Serializable {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
