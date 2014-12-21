@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,17 +54,29 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
 
         progressDialog = new ProgressDialog(getActivity());
 
+        // Fragmentが表示されたときに処理をするため
+        setHasOptionsMenu(true);
+
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu,inflater);
+
+        mReserveList.fetchAllReserve(this, new User());
+    }
+
+    /*
     @OnClick(R.id.dialogTestButton)
     public void OnClick(View view) {
-        mReserveList.fetchAllReserve(this,new User());
+        mReserveList.fetchAllReserve(this, new User());
 
         this.progressDialog.setTitle("取得");
         this.progressDialog.setMessage("予約情報を取得中です");
         this.progressDialog.show();
     }
+    */
 
     public void finishedReserveFetch(boolean success) {
         Log.i("ReserveListFragment.finishedReserveFetch()", "予約の読込が終了しました");

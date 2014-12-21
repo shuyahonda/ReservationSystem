@@ -53,8 +53,8 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
 
         //使用時間を表示
         TextView useTime = (TextView)findViewById(R.id.useTimeTextView);
-        String startTime = String.format("%02d:%02d",reserve.getStartTime().get(Calendar.HOUR_OF_DAY),reserve.getStartTime().get(Calendar.MINUTE));
-        String endTime = String.format("%02d:%02d",reserve.getEndTime().get(Calendar.HOUR_OF_DAY),reserve.getEndTime().get(Calendar.MINUTE));
+        String startTime = String.format("%d:%02d",reserve.getStartTime().get(Calendar.HOUR_OF_DAY),reserve.getStartTime().get(Calendar.MINUTE));
+        String endTime = String.format("%d:%02d",reserve.getEndTime().get(Calendar.HOUR_OF_DAY),reserve.getEndTime().get(Calendar.MINUTE));
         useTime.setText(String.format("%s ~ %s",startTime,endTime));
 
         //申請日を表示
