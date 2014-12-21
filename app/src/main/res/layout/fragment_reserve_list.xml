@@ -4,12 +4,21 @@
     tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.ReserveListFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <it.gmariotti.cardslib.library.view.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="TestLoad"
         android:id="@+id/dialogTestButton"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="bottom"/>
 
 </FrameLayout>
