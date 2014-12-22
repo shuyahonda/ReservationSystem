@@ -64,6 +64,7 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
 
+        this.progressDialog.show();
         mReserveList.fetchAllReserve(this, new User());
     }
 
