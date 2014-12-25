@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="5号館第1会議室"
-                android:id="@+id/textView7"
+                android:id="@+id/room"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp" />
 

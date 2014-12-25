@@ -10,18 +10,39 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.ReserveList;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Room;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
-public class TimeSelectActivity extends ActionBarActivity {
+public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
     private Reserve reserve;
+    private ReserveList reserveList = new ReserveList();
+    private ArrayList<Room> roomList = new ArrayList<Room>();
+
+
+    @InjectView(R.id.roomSpinner)
+    public Spinner roomSpiner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +57,55 @@ public class TimeSelectActivity extends ActionBarActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(
-                String.format("%d年%d月%d日（）",
+                String.format("%d年%d月%d日（%s）",
                         this.reserve.getStartTime().get(Calendar.YEAR),
                         this.reserve.getStartTime().get(Calendar.MONTH) + 1,
-                        this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
+                        this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH),
+                        Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))
                 ));
+
+        this.roomSpiner.setOnItemSelectedListener(this);
+
+        this.initSpiner();
+    }
+
+    private void initSpiner() {
+        //jsonからroomオブジェクトを生成してroomListに格納
+        InputStream is = null;
+        String json = null;
+        int size;
+        byte[] buffer;
+        JSONObject roomsJson = null;
+        JSONArray roomArray = null;
+
+        try {
+            is = getAssets().open("room.json");
+            size = is.available();
+            buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+            roomsJson = new JSONObject(json);
+            roomArray = roomsJson.getJSONArray("room");
+
+            for (int i = 0; i < roomArray.length(); i++) {
+                JSONObject roomJson = roomArray.getJSONObject(i);
+                String name = roomJson.getString("name");
+                int capacity = roomJson.getInt("capacity");
+                Room room = new Room(name,capacity);
+                this.roomList.add(room);
+            }
+
+            ArrayAdapter<Room> arrayAdapter = new ArrayAdapter<Room>(this, R.layout.support_simple_spinner_dropdown_item, roomList);
+            this.roomSpiner.setAdapter(arrayAdapter);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+
+
     }
 
 
@@ -120,5 +185,13 @@ public class TimeSelectActivity extends ActionBarActivity {
         Intent intent = new Intent(this,ReserveCompleteActivity.class);
         intent.putExtra("reserve",reserve);
         startActivity(intent);
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Room selectedRoom = (Room)roomSpiner.getSelectedItem();
+        reserve.setRoom(selectedRoom.getName());
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
     }
 }

@@ -24,6 +24,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
 public class ReserveCompleteActivity extends ActionBarActivity implements Reserve.ReserveCallbacks, DialogInterface.OnClickListener {
     private Reserve reserve;
@@ -49,7 +50,10 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         String resMonth = String.valueOf(this.reserve.getStartTime().get(Calendar.MONTH) + 1);
         String resDay = String.valueOf(this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH));
 
-        useDay.setText(String.format("%s年%s月%s日（%s）",resYear,resMonth,resDay,""));
+        useDay.setText(String.format("%s年%s月%s日（%s）",
+                resYear,
+                resMonth,resDay,
+                Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))));
 
         //使用時間を表示
         TextView useTime = (TextView)findViewById(R.id.useTimeTextView);
@@ -65,7 +69,14 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
         String day = String.format("%s",calendar.get(Calendar.DAY_OF_MONTH));
         String dayOfWeek = String.format("%s",calendar.get(Calendar.DAY_OF_WEEK)); //曜日
 
-        requestDay.setText(String.format("%s年%s月%s日（%s）",year,month,day,""));
+        TextView room = (TextView)findViewById(R.id.room);
+        room.setText(this.reserve.getRoom());
+
+        requestDay.setText(String.format("%s年%s月%s日（%s）",
+                year,
+                month,
+                day,
+                Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))));
     }
 
     @Override

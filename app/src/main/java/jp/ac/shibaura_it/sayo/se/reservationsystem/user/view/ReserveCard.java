@@ -11,6 +11,7 @@ import java.util.Calendar;
 import it.gmariotti.cardslib.library.internal.Card;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
 /**
  * Created by Shuya on 14/12/21.
@@ -38,12 +39,16 @@ public class ReserveCard extends Card {
 
     private void init() {
         // Set a OnClickListener listener
+
+        /*
         setOnClickListener(new OnCardClickListener() {
             @Override
             public void onClick(Card card, View view) {
                 Toast.makeText(getContext(), "Click Listener card =", Toast.LENGTH_LONG).show();
+
             }
         });
+        */
     }
 
     @Override
@@ -57,12 +62,18 @@ public class ReserveCard extends Card {
         this.reserveCardRoom.setText(this.reserve.getRoom());
         this.reserveCardTime.setText(this.reserve.getStartTimeHourOnly() + " 〜 " + this.reserve.getEndTimeHourOnly());
 
-
-        this.reserveCardDay.setText(String.format("%d年%d月%02d日（）",
+        this.reserveCardDay.setText(String.format("%d年%d月%02d日（%s）",
                 this.reserve.getStartTime().get(Calendar.YEAR),
                 this.reserve.getStartTime().get(Calendar.MONTH) + 1,
-                this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
+                this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH),
+                Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))
         ));
+
+//        parent.setPadding(0,0,0,50);
+    }
+
+    public Reserve getReserve() {
+        return this.reserve;
     }
 
 }

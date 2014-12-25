@@ -1,6 +1,7 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,9 +19,12 @@ import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.view.CardListView;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.ReserveList;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.User;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.view.ReserveCard;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.view.ReserveDetailDialog;
+import me.drakeet.materialdialog.MaterialDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +39,7 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
     private ArrayList<Card> mCards;
     private CardArrayAdapter mCardArrayAdapter;
     private ProgressDialog progressDialog;
+    private ReserveDetailDialog reserveDetailDialog;
 
 
     public ReserveListFragment() {
@@ -89,6 +94,26 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
         for (int i = 0; i < mReserveList.length(); i++) {
             Log.i("ReserveListFragment.finishedReserveFetch()","予約をリストに追加しました");
             Card card = new ReserveCard(getActivity(), mReserveList.get(i));
+            final Reserve reserve = mReserveList.get(i);
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    ReserveCard reserveCard = (ReserveCard)card;
+
+                    // 予約詳細ダイアログを表示
+                    reserveDetailDialog = new ReserveDetailDialog(getActivity(), reserve);
+                    reserveDetailDialog.setTitle("予約詳細");
+                    reserveDetailDialog.setPositiveButton("閉じる", new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            reserveDetailDialog.dismiss();
+                        }
+                    });
+
+                    reserveDetailDialog.show();
+
+                }
+            });
             mCards.add(card);
         }
 

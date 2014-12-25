@@ -37,8 +37,6 @@ public class ReserveCalendarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reserve_calendar, container, false);
         ButterKnife.inject(this,view);
 
-
-
         // TODO : ButterKnifeがCalendarViewに対応していないため
         calendarView.setOnDateChangeListener(new OnDateChangeListener() {
             @Override
@@ -59,7 +57,6 @@ public class ReserveCalendarFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         //calendarView.setOnDateChangeListener(this);
         return view;
