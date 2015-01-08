@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReserveListFragment extends Fragment implements ReserveList.ReserveListCallbacks {
+public class ReserveListFragment extends Fragment implements ReserveList.ReserveListCallbacks, ReserveCard.ReserveCancelListener, Reserve.ReserveCallbacks {
     /**
      * 予約リスト
      * 取得はここを通して行う
@@ -92,7 +93,8 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
 
         for (int i = 0; i < mReserveList.length(); i++) {
             Log.i("ReserveListFragment.finishedReserveFetch()","予約をリストに追加しました");
-            Card card = new ReserveCard(getActivity(), mReserveList.get(i));
+            ReserveCard card = new ReserveCard(getActivity(), mReserveList.get(i));
+            card.setOnReserveCancelListener(this);
             final Reserve reserve = mReserveList.get(i);
             card.setOnClickListener(new Card.OnCardClickListener() {
                 @Override
@@ -109,13 +111,48 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
                         }
                     });
 
+
                     reserveDetailDialog.show();
 
                 }
             });
+
             mCards.add(card);
         }
 
         this.progressDialog.dismiss();
+    }
+
+    public void onReserveCancel(Reserve reserve) {
+        this.progressDialog.show();
+        Log.i("ReserveCancel",reserve.toString());
+        reserve.delete(this);
+    }
+
+    public void didDelete(boolean success) {
+        if (success) {
+            Log.i("ReserveDelete","予約を削除しました");
+            new AlertDialog.Builder(this.getActivity())
+                    .setTitle("確認")
+                    .setMessage("予約を削除しました")
+                    .setPositiveButton("OK", null)
+                    .show();
+
+        } else {
+            Log.i("ReserveDelete","予約を削除することができませんでした");
+            new AlertDialog.Builder(this.getActivity())
+                    .setTitle("確認")
+                    .setMessage("予約削除が完了しました")
+                    .setPositiveButton("OK", null)
+                    .show();
+
+        }
+
+        this.progressDialog.dismiss();
+        this.mReserveList.fetchAllReserve(this, null);
+    }
+
+    public void didRegist(boolean success) {
+
     }
 }

@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeSelectActivity">
 
     <FrameLayout
@@ -50,15 +51,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false" />
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name=""
-        android:id="@+id/fragment"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+    <com.alamkanak.weekview.WeekView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
         android:layout_above="@+id/fragment1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/frameLayout" />
+        app:noOfVisibleDays="1"
+        app:hourHeight="40dp"
+        app:todayHeaderTextColor="@color/abc_background_cache_hint_selector_material_light"
+        app:headerColumnPadding="15dp"
+        android:id="@+id/weekView" />
 </RelativeLayout>

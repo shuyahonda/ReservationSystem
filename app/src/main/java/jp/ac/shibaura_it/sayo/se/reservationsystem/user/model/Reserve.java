@@ -100,17 +100,9 @@ public class Reserve implements Serializable {
      * サーバと通信する
      * @return 削除が成功したかどうか
      */
-    public void delete(ReserveCallbacks callback) {
-    }
-
-    /**
-     * 予約記録をサーバに登録する
-     * サーバと通信する
-     * 通信終了時にcallback
-     */
-    public void regist(final ReserveCallbacks callback) {
-        //String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
-        String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
+    public void delete(final ReserveCallbacks callback) {
+        String url = "http://10.0.2.2:8080/rs/reserve/delete";    // Emulator
+        //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
         //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -124,7 +116,72 @@ public class Reserve implements Serializable {
             jsonParams.put("contactOfResponsiblePerson", this.getResponsiblePersonContact());
             jsonParams.put("isManagerCheck", "false");
             jsonParams.put("peopleNum", 0); //まだできていないので固定
-            jsonParams.put("room","5号館第1会議室"); //まだできていないので固定
+            jsonParams.put("room",this.getRoom()); //まだできていないので固定
+            jsonParams.put("purpose",this.getPurpose());
+
+            jsonParams.put("requestDay", Utility.formatDateJsonStyle(this.requestDay));
+
+            //時間を整形して渡す必要がある
+            JSONObject time = new JSONObject();
+            time.put("start", Utility.formatDateJsonStyle(this.startTime));
+            time.put("end", Utility.formatDateJsonStyle(this.endTime));
+            jsonParams.put("time",time);
+
+            JSONObject user = new JSONObject();
+            //ユーザー情報を保持する部分ができていない（後回しにして固定）
+            user.put("lastName","本田");
+            user.put("firstName","修也");
+            user.put("mailAddress","bp12110@shibaura-it.ac.jp");
+            user.put("affiliation","申請者");
+            jsonParams.put("user",user);
+
+            entity = new StringEntity(jsonParams.toString(),"UTF-8");
+        } catch (JSONException ex) {
+
+        } catch (UnsupportedEncodingException ex) {
+
+        }
+
+        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+
+        client.post(null, url, entity, "application/json",
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        Log.d("Reserve.regist()","登録に成功しました");
+                        callback.didDelete(true);
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Log.d("Reserve.regist()","登録に失敗しました");
+                        callback.didDelete(false);
+                    }
+                });
+    }
+
+    /**
+     * 予約記録をサーバに登録する
+     * サーバと通信する
+     * 通信終了時にcallback
+     */
+    public void regist(final ReserveCallbacks callback) {
+        String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
+        //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
+        //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        JSONObject jsonParams = new JSONObject();
+        StringEntity entity = null;
+
+        try {
+            //パラメータ設定
+            jsonParams.put("responsiblePerson", this.getResponsiblePerson());
+            jsonParams.put("contactOfResponsiblePerson", this.getResponsiblePersonContact());
+            jsonParams.put("isManagerCheck", "false");
+            jsonParams.put("peopleNum", 0); //まだできていないので固定
+            jsonParams.put("room",this.getRoom()); //まだできていないので固定
             jsonParams.put("purpose",this.getPurpose());
 
             jsonParams.put("requestDay", Utility.formatDateJsonStyle(this.requestDay));
@@ -295,7 +352,7 @@ public class Reserve implements Serializable {
             e.printStackTrace();
         }
 
-        this.startTime = cal;
+        this.requestDay = cal;
     }
 
     public String getRoom() {

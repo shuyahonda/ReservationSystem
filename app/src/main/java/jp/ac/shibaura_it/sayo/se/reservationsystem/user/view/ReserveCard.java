@@ -3,6 +3,7 @@ package jp.ac.shibaura_it.sayo.se.reservationsystem.user.view;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,12 +17,17 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 /**
  * Created by Shuya on 14/12/21.
  */
-public class ReserveCard extends Card {
+public class ReserveCard extends Card implements Button.OnClickListener {
+    private ReserveCancelListener reserveCancelListener;
     private Reserve reserve;
     private TextView reserveCardDay;
     private TextView reserveCardPurpose;
     private TextView reserveCardRoom;
     private TextView reserveCardTime;
+
+    public interface ReserveCancelListener{
+        public void onReserveCancel(Reserve reserve);
+    }
 
     public ReserveCard(Context context) {
         this(context, R.layout.reserve_card_layout);
@@ -35,6 +41,10 @@ public class ReserveCard extends Card {
     public ReserveCard(Context context, int innerLayout) {
         super(context, innerLayout);
         init();
+    }
+
+    public void setOnReserveCancelListener(ReserveCancelListener listener) {
+        this.reserveCancelListener = listener;
     }
 
     private void init() {
@@ -69,11 +79,15 @@ public class ReserveCard extends Card {
                 Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))
         ));
 
-//        parent.setPadding(0,0,0,50);
+        Button cancelButton = (Button)parent.findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(this);
     }
 
     public Reserve getReserve() {
         return this.reserve;
     }
 
+    public void onClick(View view) {
+        this.reserveCancelListener.onReserveCancel(this.reserve);
+    }
 }

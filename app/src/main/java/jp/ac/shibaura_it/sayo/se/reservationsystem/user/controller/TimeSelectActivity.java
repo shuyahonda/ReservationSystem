@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.graphics.RectF;
 import android.support.v7.app.ActionBar;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -15,6 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.alamkanak.weekview.WeekView;
+import com.alamkanak.weekview.WeekViewEvent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +30,7 @@ import java.io.InputStream;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,10 +41,13 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.ReserveList;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Room;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
-public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener, WeekView.MonthChangeListener, WeekView.EventClickListener, WeekView.EventLongPressListener {
     private Reserve reserve;
     private ReserveList reserveList = new ReserveList();
     private ArrayList<Room> roomList = new ArrayList<Room>();
+
+    @InjectView(R.id.weekView)
+    public WeekView mWeekView;
 
 
     @InjectView(R.id.roomSpinner)
@@ -67,6 +76,28 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
         this.roomSpiner.setOnItemSelectedListener(this);
 
         this.initSpiner();
+
+
+        this.mWeekView.setOnEventClickListener(this);
+        this.mWeekView.setMonthChangeListener(this);
+        this.mWeekView.setEventLongPressListener(this);
+
+    }
+
+    @Override
+    public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        return events;
+    }
+
+    @Override
+    public void onEventClick(WeekViewEvent event, RectF eventRect) {
+        Toast.makeText(this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+        Toast.makeText(this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
     private void initSpiner() {
