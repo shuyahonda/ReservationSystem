@@ -16,13 +16,6 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/lib-core-3.1.0-d5141f66af91e4d2928099dddfd8e900ab3ba3e0.jar" />
     </item>
     <item
-        jar="/Users/Shuya/Applications/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
-        jumboMode="false"
-        revision="21.0.2"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1ae9cb19d10f1bde81fe54ca5c66c1f2667fa30d.jar" />
-    </item>
-    <item
         jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
         jumboMode="false"
         revision="21.0.2"
@@ -49,6 +42,13 @@
         revision="21.0.2"
         sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-57eede37d2db24025585d895abc2d34023ff69bb.jar" />
+    </item>
+    <item
+        jar="/Users/Shuya/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-d387a54be165a25a38377704a867e40de6ffd357.jar" />
     </item>
     <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.9.1/classes.jar"

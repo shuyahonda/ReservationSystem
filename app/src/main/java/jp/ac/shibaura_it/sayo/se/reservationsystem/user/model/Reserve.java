@@ -109,7 +109,8 @@ public class Reserve implements Serializable {
      * 通信終了時にcallback
      */
     public void regist(final ReserveCallbacks callback) {
-        String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
+        //String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
+        String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
         //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
 
         AsyncHttpClient client = new AsyncHttpClient();

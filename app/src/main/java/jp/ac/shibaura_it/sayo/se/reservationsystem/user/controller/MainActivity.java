@@ -2,6 +2,8 @@ package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import java.util.Locale;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -11,11 +13,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 
@@ -79,13 +83,31 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+        //ユーザー情報の登録状況をチェック
+        SharedPreferences pref = getSharedPreferences("name_and_address", MODE_PRIVATE);
+
+        if (pref.getString("MAIL_ADDRESS","") == "") {
+            /*
+            editor.putString("FIRST_NAME",this.firstName.getText().toString());
+            editor.putString("LAST_NAME",this.lastName.getText().toString());
+            editor.putString("MAIL_ADDRESS",this.mailAddress.getText().toString());
+            */
+            Log.i("PrefSaves", pref.getString("FIRST_NAME", ""));
+            Log.i("PrefSaves", pref.getString("LAST_NAME",""));
+            Log.i("PrefSaves", pref.getString("MAIL_ADDRESS",""));
+
+            String caution = "ユーザ情報を登録する必要があります。姓・名と芝浦のメールアドレスを入力してください。";
+            Toast.makeText(this, caution, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this,UserRegistActivity.class);
+            this.startActivity(intent);
+        }
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -98,9 +120,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                Intent intent = new Intent(MainActivity.this, UserRegistActivity.class);
+                startActivity(intent);
+
+                return true;
         }
+        //return false;
 
         return super.onOptionsItemSelected(item);
     }
@@ -199,5 +226,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             return rootView;
         }
     }
-
 }
