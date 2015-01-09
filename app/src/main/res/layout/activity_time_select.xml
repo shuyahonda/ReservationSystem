@@ -24,7 +24,7 @@
             android:spinnerMode="dropdown"
             android:touchscreenBlocksFocus="false"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
 
         <View android:layout_width="match_parent"
@@ -58,7 +58,6 @@
         android:layout_above="@+id/fragment1"
         app:noOfVisibleDays="1"
         app:hourHeight="40dp"
-        app:todayHeaderTextColor="@color/abc_background_cache_hint_selector_material_light"
         app:headerColumnPadding="15dp"
         android:id="@+id/weekView" />
 </RelativeLayout>

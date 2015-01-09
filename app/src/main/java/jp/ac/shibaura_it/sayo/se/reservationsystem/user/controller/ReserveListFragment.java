@@ -131,10 +131,10 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
 
     public void didDelete(boolean success) {
         if (success) {
-            Log.i("ReserveDelete","予約を削除しました");
+            Log.i("ReserveDelete","予約をキャンセルしました");
             new AlertDialog.Builder(this.getActivity())
                     .setTitle("確認")
-                    .setMessage("予約を削除しました")
+                    .setMessage("予約をキャンセルしました")
                     .setPositiveButton("OK", null)
                     .show();
 
@@ -142,7 +142,7 @@ public class ReserveListFragment extends Fragment implements ReserveList.Reserve
             Log.i("ReserveDelete","予約を削除することができませんでした");
             new AlertDialog.Builder(this.getActivity())
                     .setTitle("確認")
-                    .setMessage("予約削除が完了しました")
+                    .setMessage("予約を削除することができませんでした")
                     .setPositiveButton("OK", null)
                     .show();
 
