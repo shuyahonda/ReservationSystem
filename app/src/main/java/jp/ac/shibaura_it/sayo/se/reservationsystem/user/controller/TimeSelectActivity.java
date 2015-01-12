@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.app.Fragment;
 import android.graphics.RectF;
 import android.support.v7.app.ActionBar;
 import android.app.TimePickerDialog;
@@ -41,14 +42,14 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.ReserveList;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Room;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
 
-public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener, WeekView.MonthChangeListener, WeekView.EventClickListener, WeekView.EventLongPressListener {
+public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
     private Reserve reserve;
     private ReserveList reserveList = new ReserveList();
     private ArrayList<Room> roomList = new ArrayList<Room>();
 
-    @InjectView(R.id.weekView)
-    public WeekView mWeekView;
-
+    //@InjectView(R.id.weekView)
+    //public WeekView mWeekView;
+    private OneDayFragment oneDayFragment;
 
     @InjectView(R.id.roomSpinner)
     public Spinner roomSpiner;
@@ -77,14 +78,17 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
 
         this.initSpiner();
 
-
+        this.oneDayFragment = (OneDayFragment)getFragmentManager().findFragmentById(R.id.oneDayFragment);
+        this.oneDayFragment.addReserve(false,null);
+        /*
         this.mWeekView.setOnEventClickListener(this);
         this.mWeekView.setMonthChangeListener(this);
         this.mWeekView.setEventLongPressListener(this);
+        */
 
 
     }
-
+    /*
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
@@ -100,6 +104,7 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
         Toast.makeText(this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
     }
+    */
 
     private void initSpiner() {
         //jsonからroomオブジェクトを生成してroomListに格納

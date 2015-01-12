@@ -51,13 +51,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false" />
 
-    <com.alamkanak.weekview.WeekView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.OneDayFragment"
+        android:id="@+id/oneDayFragment"
         android:layout_below="@+id/frameLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_above="@+id/fragment1"
-        app:noOfVisibleDays="1"
-        app:hourHeight="40dp"
-        app:headerColumnPadding="15dp"
-        android:id="@+id/weekView" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

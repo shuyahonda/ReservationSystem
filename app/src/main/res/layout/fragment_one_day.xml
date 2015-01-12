@@ -10,16 +10,18 @@
         android:layout_height="match_parent"
         android:id="@+id/scrollView" >
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/zero">
 
                 <TextView
                     android:layout_width="80dp"
@@ -40,7 +42,10 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/one"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/zero">
 
                 <TextView
                     android:layout_width="80dp"
@@ -61,7 +66,9 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/two"
+                android:layout_below="@+id/one">
 
                 <TextView
                     android:layout_width="80dp"
@@ -82,7 +89,9 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/three"
+                android:layout_below="@+id/two">
 
                 <TextView
                     android:layout_width="80dp"
@@ -103,7 +112,9 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/four"
+                android:layout_below="@+id/three">
 
                 <TextView
                     android:layout_width="80dp"
@@ -121,10 +132,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/five"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/four">
 
                 <TextView
                     android:layout_width="80dp"
@@ -142,10 +155,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/six"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/five">
 
                 <TextView
                     android:layout_width="80dp"
@@ -163,10 +178,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/seven"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/six">
 
                 <TextView
                     android:layout_width="80dp"
@@ -184,10 +201,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/eight"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/seven">
 
                 <TextView
                     android:layout_width="80dp"
@@ -205,10 +224,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/nine"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/eight">
 
                 <TextView
                     android:layout_width="80dp"
@@ -226,10 +247,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ten"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/nine">
 
                 <TextView
                     android:layout_width="80dp"
@@ -247,10 +270,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/eleven"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/ten">
 
                 <TextView
                     android:layout_width="80dp"
@@ -268,10 +293,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/twelve"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/eleven">
 
                 <TextView
                     android:layout_width="80dp"
@@ -289,10 +316,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmzero"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/twelve">
 
                 <TextView
                     android:layout_width="80dp"
@@ -310,10 +339,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmtwo"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmzero">
 
                 <TextView
                     android:layout_width="80dp"
@@ -331,10 +362,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmthree"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmtwo">
 
                 <TextView
                     android:layout_width="80dp"
@@ -352,10 +385,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmfour"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmthree">
 
                 <TextView
                     android:layout_width="80dp"
@@ -373,10 +408,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmfive"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmfour">
 
                 <TextView
                     android:layout_width="80dp"
@@ -394,10 +431,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmsix"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmfive">
 
                 <TextView
                     android:layout_width="80dp"
@@ -415,10 +454,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmseven"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmsix">
 
                 <TextView
                     android:layout_width="80dp"
@@ -436,10 +477,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmeight"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmseven">
 
                 <TextView
                     android:layout_width="80dp"
@@ -457,10 +500,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmnine"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmeight">
 
                 <TextView
                     android:layout_width="80dp"
@@ -478,10 +523,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmten"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmnine">
 
                 <TextView
                     android:layout_width="80dp"
@@ -499,10 +546,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pmeleven"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmten">
 
                 <TextView
                     android:layout_width="80dp"
@@ -519,10 +568,12 @@
                     android:layout_marginRight="70px" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/pmtwelve"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_below="@+id/pmeleven">
 
                 <TextView
                     android:layout_width="80dp"
@@ -538,6 +589,6 @@
                     android:background="@android:color/darker_gray"
                     android:layout_marginRight="70px" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 </FrameLayout>
