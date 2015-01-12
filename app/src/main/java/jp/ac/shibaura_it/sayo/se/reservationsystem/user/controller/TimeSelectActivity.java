@@ -1,6 +1,7 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.graphics.RectF;
 import android.support.v7.app.ActionBar;
 import android.app.TimePickerDialog;
@@ -36,19 +37,26 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.view.CardListView;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Reserve;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.ReserveList;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.model.Room;
 import jp.ac.shibaura_it.sayo.se.reservationsystem.user.utility.Utility;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.view.ReserveCard;
+import jp.ac.shibaura_it.sayo.se.reservationsystem.user.view.ReserveDetailDialog;
 
-public class TimeSelectActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class TimeSelectActivity extends ActionBarActivity implements ReserveList.ReserveListCallbacks, AdapterView.OnItemSelectedListener, WeekView.MonthChangeListener, WeekView.EventClickListener, WeekView.EventLongPressListener  {
     private Reserve reserve;
     private ReserveList reserveList = new ReserveList();
     private ArrayList<Room> roomList = new ArrayList<Room>();
+    private ProgressDialog progressDialog;
 
-    //@InjectView(R.id.weekView)
-    //public WeekView mWeekView;
+    private static final int DEFAULT_SELECTED_HOUR = 9;
+
+    @InjectView(R.id.weekView)
+    public WeekView mWeekView;
     private OneDayFragment oneDayFragment;
 
     @InjectView(R.id.roomSpinner)
@@ -60,6 +68,7 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
         setContentView(R.layout.activity_time_select);
         ButterKnife.inject(this);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff009688));
+        progressDialog = new ProgressDialog(this);
 
         Intent intent = getIntent();
         Reserve reserve = (Reserve)intent.getSerializableExtra("reserve");
@@ -78,33 +87,57 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
 
         this.initSpiner();
 
-        this.oneDayFragment = (OneDayFragment)getFragmentManager().findFragmentById(R.id.oneDayFragment);
-        this.oneDayFragment.addReserve(false,null);
-        /*
+        //this.oneDayFragment = (OneDayFragment)getFragmentManager().findFragmentById(R.id.oneDayFragment);
+        //this.oneDayFragment.addReserve(false,null);
+
         this.mWeekView.setOnEventClickListener(this);
         this.mWeekView.setMonthChangeListener(this);
         this.mWeekView.setEventLongPressListener(this);
-        */
 
+        Calendar selectedDay = Calendar.getInstance();
 
+        selectedDay.set(this.reserve.getStartTime().get(Calendar.YEAR),
+                this.reserve.getStartTime().get(Calendar.MONTH),
+                this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH)
+        );
+
+        Log.i("selectedDay", selectedDay.toString());
+        this.mWeekView.goToDate(selectedDay);
+        this.mWeekView.goToHour(DEFAULT_SELECTED_HOUR);
+        this.reserveList.fetchAllReserve(this, null);
+        this.progressDialog.show();
     }
-    /*
+
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+        //ここでイベントを返せばいい
+        ArrayList<Reserve> reserves = this.reserveList.getReserves();
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        WeekViewEvent event;
+
+        for (Reserve reserve : reserves) {
+            Log.i("test", String.format("%d", reserves.size()));
+            Log.i("onMonthChange", "Eventを追加しました");
+            event = new WeekViewEvent(1, this.getEventTitle(reserve), reserve.getStartTime(), reserve.getEndTime());
+            event.setColor(0xcaE57373);
+            events.add(event);
+        }
+
+        Log.i("test", String.format("events.count %d", events.size()));
+
         return events;
     }
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
     }
-    */
+
 
     private void initSpiner() {
         //jsonからroomオブジェクトを生成してroomListに格納
@@ -141,10 +174,7 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -225,10 +255,22 @@ public class TimeSelectActivity extends ActionBarActivity implements AdapterView
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        this.progressDialog.show();
+        this.reserveList.fetchAllReserve(this,null);
         Room selectedRoom = (Room)roomSpiner.getSelectedItem();
         reserve.setRoom(selectedRoom.getName());
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    public void finishedReserveFetch(boolean success) {
+        Log.i("ReserveListFragment.finishedReserveFetch()", "既存予約の読込が終了しました");
+        this.mWeekView.notifyDatasetChanged();
+        this.progressDialog.dismiss();
+    }
+
+    private String getEventTitle(Reserve reserve) {
+        return String.format("予約済 (%02d:%02d ~ %02d:%02d)",reserve.getStartTime().get(Calendar.HOUR_OF_DAY),reserve.getStartTime().get(Calendar.MINUTE),reserve.getEndTime().get(Calendar.HOUR_OF_DAY),reserve.getEndTime().get(Calendar.MINUTE));
     }
 }

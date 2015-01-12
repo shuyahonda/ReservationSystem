@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeSelectActivity">
+    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeSelectActivity"
+    android:background="@android:color/white">
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -51,16 +52,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false" />
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.OneDayFragment"
-        android:id="@+id/oneDayFragment"
+    <com.alamkanak.weekview.WeekView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/frameLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/fragment1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+        app:eventTextColor="@android:color/white"
+        app:noOfVisibleDays="1"
+        android:id="@+id/weekView"
+        app:hourHeight="30dp"
+        android:layout_marginTop="5dp" />
 </RelativeLayout>
