@@ -81,6 +81,9 @@ public class ReserveCard extends Card implements Button.OnClickListener {
 
         Button cancelButton = (Button)parent.findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(this);
+
+        parent.setBottom(10);
+        view.setPadding(0,0,0,30);
     }
 
     public Reserve getReserve() {
