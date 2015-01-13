@@ -101,9 +101,9 @@ public class Reserve implements Serializable {
      * @return 削除が成功したかどうか
      */
     public void delete(final ReserveCallbacks callback) {
-        String url = "http://10.0.2.2:8080/rs/reserve/delete";    // Emulator
+        //String url = "http://10.0.2.2:8080/rs/reserve/delete";    // Emulator
         //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
-        //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
+        String url = "http://172.30.54.138:8080/rs/reserve/delete"; // 実機から
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -116,7 +116,7 @@ public class Reserve implements Serializable {
             jsonParams.put("contactOfResponsiblePerson", this.getResponsiblePersonContact());
             jsonParams.put("isManagerCheck", "false");
             jsonParams.put("peopleNum", 0); //まだできていないので固定
-            jsonParams.put("room",this.getRoom()); //まだできていないので固定
+            jsonParams.put("room",this.getRoom());
             jsonParams.put("purpose",this.getPurpose());
 
             jsonParams.put("requestDay", Utility.formatDateJsonStyle(this.requestDay));
@@ -148,13 +148,13 @@ public class Reserve implements Serializable {
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        Log.d("Reserve.regist()","登録に成功しました");
+                        Log.d("Reserve.regist()","削除に成功しました");
                         callback.didDelete(true);
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Log.d("Reserve.regist()","登録に失敗しました");
+                        Log.d("Reserve.regist()","削除に失敗しました");
                         callback.didDelete(false);
                     }
                 });
@@ -166,9 +166,9 @@ public class Reserve implements Serializable {
      * 通信終了時にcallback
      */
     public void regist(final ReserveCallbacks callback) {
-        String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
+        //String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
         //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
-        //String url = "http://172.30.49.149:8080/rs/reserve"; // 実機から
+        String url = "http://172.30.54.138:8080/rs/reserve"; // 実機から
 
         AsyncHttpClient client = new AsyncHttpClient();
 

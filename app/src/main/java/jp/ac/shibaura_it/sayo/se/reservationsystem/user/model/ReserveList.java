@@ -8,6 +8,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +31,9 @@ public class ReserveList {
         public void finishedReserveFetch(boolean success);
     }
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/rs/reserve";
+    //private static final String BASE_URL = "http://10.0.2.2:8080/rs/reserve";
+    private static final String BASE_URL = "http://172.30.54.138:8080/rs/reserve"; //実機から
+
     /**
      * このクラス内のメソッドはすべてこのリストを更新する
      */
@@ -67,8 +70,47 @@ public class ReserveList {
      * @param calendar
      * @param roomName
      */
-    public void fetchAllReserve(int year, int month, int day, String roomName) {
+    public void fetchAllReserve(final ReserveListCallbacks callback ,int year, int month, int day, String roomName) {
+        this.reserves.clear();
+        RequestParams params = new RequestParams();
+        params.put("year",year);
+        params.put("month",month);
+        params.put("day",day);
+        params.put("roomName", roomName);
 
+        params.setContentEncoding("UTF-8");
+
+        this.client.get(BASE_URL, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    String strJson = new String(responseBody,"UTF-8");
+                    HashMap<String,Object> map;
+                    System.out.println(strJson);
+
+                    JSONObject json = new JSONObject(strJson);
+                    JSONArray list = json.getJSONArray("data");
+
+                    for (int i = 0; i < list.length(); i++) {
+                        JSONObject reserveJson = list.getJSONObject(i);
+                        Reserve reserve = new Reserve();
+                        initJsonObjectToReserve(reserveJson,reserve);
+                        reserves.add(reserve);
+                    }
+
+                } catch (UnsupportedEncodingException ex) {
+
+                } catch (JSONException ex) {
+
+                }
+                callback.finishedReserveFetch(true);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                callback.finishedReserveFetch(false);
+            }
+        });
     }
 
     /**

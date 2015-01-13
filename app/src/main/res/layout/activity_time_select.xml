@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeSelectActivity">
+    tools:context="jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller.TimeSelectActivity"
+    android:background="@android:color/white">
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -56,8 +57,10 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/frameLayout"
         android:layout_above="@+id/fragment1"
+        app:eventTextColor="@android:color/white"
         app:noOfVisibleDays="1"
-        app:hourHeight="40dp"
-        app:headerColumnPadding="15dp"
-        android:id="@+id/weekView" />
+        android:id="@+id/weekView"
+        app:hourHeight="30dp"
+        android:layout_marginTop="5dp"
+        />
 </RelativeLayout>

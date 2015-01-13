@@ -30,6 +30,13 @@
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-751780163f8e46cfdf7f15a3334ffba2637419e6.jar" />
     </item>
     <item
+        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.alamkanak/android-week-view/1.2.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="246fd881b6edca03120d2b653662664b6c2b35da">
+        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-88ae3900bf3c0edf5cb898f58e107b5d6118be77.jar" />
+    </item>
+    <item
         jar="/Users/Shuya/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
         jumboMode="false"
         revision="21.0.2"
@@ -63,13 +70,6 @@
         revision="21.0.2"
         sha1="63737e512fcd9e0ebe9bcd0bb375c2dded74116f">
         <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/lib-manipulation-3.1.0-429369da16281a6be881b54edac02ffcb7a9e0d3.jar" />
-    </item>
-    <item
-        jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/com.github.alamkanak/android-week-view/1.1.7/classes.jar"
-        jumboMode="false"
-        revision="21.0.2"
-        sha1="7b049637c80f63053a44e358dcfc4d06eaae2961">
-        <dex dex="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/pre-dexed/debug/classes-b68dc3ffb9864642a9740fdf49f28c78d64cbbe9.jar" />
     </item>
     <item
         jar="/Users/Shuya/Projects/ReservationSystem/ReservationSystemUser/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
