@@ -33,6 +33,12 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
     @InjectView(R.id.purpose)
     public EditText purposeEditText;
 
+    @InjectView(R.id.responsiblePerson)
+    public EditText responsiblePerson;
+
+    @InjectView(R.id.responsiblePersonContact)
+    public EditText responsiblePersonContact;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
 
         reserve = (Reserve)getIntent().getSerializableExtra("reserve");
         progressDialog = new ProgressDialog(this);
+
 
         //日時を表示
         TextView useDay = (TextView)findViewById(R.id.useDayTextView);
@@ -77,6 +84,10 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
                 month,
                 day,
                 Utility.getDayOfWeek(this.reserve.getStartTime().get(Calendar.DAY_OF_WEEK))));
+
+        this.purposeEditText.setText("");
+        this.responsiblePersonContact.setText("");
+        this.responsiblePerson.setText("");
     }
 
     @Override
@@ -103,12 +114,24 @@ public class ReserveCompleteActivity extends ActionBarActivity implements Reserv
 
     @OnClick(R.id.detailDecisionButton)
     public void onDecisionClick(View view) {
-        this.progressDialog.setTitle("登録");
-        this.progressDialog.setMessage("予約情報を登録中です");
-        this.progressDialog.show();
+        Log.i("Check", this.responsiblePerson.getText().toString());
+        Log.i("Check", this.responsiblePersonContact.getText().toString());
+        Log.i("Check", this.purposeEditText.getText().toString());
 
-        this.reserve.setPurpose(this.purposeEditText.getText().toString());
-        this.reserve.regist(this);
+        if ((this.responsiblePerson.getText().toString().equals("") || this.responsiblePersonContact.getText().toString().equals("") || this.purposeEditText.getText().toString().equals(""))) {
+            new AlertDialog.Builder(this)
+                    .setTitle("確認")
+                    .setMessage("未入力の項目があります")
+                    .setPositiveButton("OK", null)
+                    .show();
+        } else {
+            this.progressDialog.setTitle("登録");
+            this.progressDialog.setMessage("予約情報を登録中です");
+            this.progressDialog.show();
+
+            this.reserve.setPurpose(this.purposeEditText.getText().toString());
+            this.reserve.regist(this);
+        }
     }
 
     public void didRegist(boolean success) {

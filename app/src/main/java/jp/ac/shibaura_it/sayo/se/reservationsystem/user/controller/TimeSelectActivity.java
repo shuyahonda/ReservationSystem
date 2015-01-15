@@ -1,5 +1,6 @@
 package jp.ac.shibaura_it.sayo.se.reservationsystem.user.controller;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.graphics.RectF;
@@ -31,8 +32,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.math.RoundingMode;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -65,6 +70,12 @@ public class TimeSelectActivity extends ActionBarActivity implements ReserveList
 
     @InjectView(R.id.roomSpinner)
     public Spinner roomSpiner;
+
+    @InjectView(R.id.startTimeButton)
+    public Button startTimeButton;
+
+    @InjectView(R.id.endTimeButton)
+    public Button endTimeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,10 +124,10 @@ public class TimeSelectActivity extends ActionBarActivity implements ReserveList
         //this.reserveList.fetchAllReserve(this, null);
         this.isOnceCalled = false;
 
-        this.reserveList.fetchAllReserve(this,this.reserve.getStartTime().get(Calendar.YEAR),
-                                         this.reserve.getStartTime().get(Calendar.MONTH),
-                                         this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH),
-                                         this.reserve.getRoom());
+        this.reserveList.fetchAllReserve(this, this.reserve.getStartTime().get(Calendar.YEAR),
+                this.reserve.getStartTime().get(Calendar.MONTH),
+                this.reserve.getStartTime().get(Calendar.DAY_OF_MONTH),
+                this.reserve.getRoom());
         this.progressDialog.show();
 
 
@@ -270,9 +281,47 @@ public class TimeSelectActivity extends ActionBarActivity implements ReserveList
 
     @OnClick(R.id.decisionButton)
     public void onDecisionButtonClick(View view) {
-        Intent intent = new Intent(this,ReserveCompleteActivity.class);
-        intent.putExtra("reserve",reserve);
-        startActivity(intent);
+
+        if (this.startTimeButton.getText().toString().equals("開始時間") || this.endTimeButton.getText().toString().equals("終了時間")) {
+            new AlertDialog.Builder(this)
+                    .setTitle("確認")
+                    .setMessage("開始時間と終了時間の両方を入力してください")
+                    .setPositiveButton("OK", null)
+                    .show();
+        } else if (!this.startTimeButton.getText().toString().equals("開始時間") && !this.endTimeButton.getText().toString().equals("終了時間")) {
+            String startTimeStr = this.startTimeButton.getText().toString();
+            String endTimeStr = this.endTimeButton.getText().toString();
+            Date startTime = null;
+            Date endTime = null;
+
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            try {
+
+                startTime = format.parse(startTimeStr);
+                endTime = format.parse(endTimeStr);
+
+                if (startTime.compareTo(endTime) == 0 || startTime.compareTo(endTime) > 0) {
+                    new AlertDialog.Builder(this)
+                            .setTitle("確認")
+                            .setMessage("入力に誤りがあります")
+                            .setPositiveButton("OK", null)
+                            .show();
+                } else {
+                    Intent intent = new Intent(this,ReserveCompleteActivity.class);
+                    intent.putExtra("reserve",reserve);
+                    startActivity(intent);
+                }
+
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+
+        } else {
+            Log.i("test","画面遷移");
+            Intent intent = new Intent(this,ReserveCompleteActivity.class);
+            intent.putExtra("reserve",reserve);
+            startActivity(intent);
+        }
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

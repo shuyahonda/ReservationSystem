@@ -109,7 +109,8 @@
                 android:hint="使用責任者の名前(フルネーム)"
                 android:maxLines="1"
                 android:layout_marginLeft="12dp"
-                android:layout_marginRight="15dp" />
+                android:layout_marginRight="15dp"
+                android:inputType="text"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,7 +155,8 @@
                 android:hint="使用目的"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="-5dp" />
+                android:layout_marginTop="-5dp"
+                android:inputType="text"/>
 
             <Button
                 android:layout_width="match_parent"

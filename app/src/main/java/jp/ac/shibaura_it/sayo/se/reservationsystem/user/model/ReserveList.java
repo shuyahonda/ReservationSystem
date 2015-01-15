@@ -33,6 +33,8 @@ public class ReserveList {
 
     //private static final String BASE_URL = "http://10.0.2.2:8080/rs/reserve";
     private static final String BASE_URL = "http://172.30.54.138:8080/rs/reserve"; //実機から
+    //private String BASE_URL =  "http://android.sayo.se.shibaura-it.ac.jp/ReservationSystemServlet/reserve"; //本番用
+
 
     /**
      * このクラス内のメソッドはすべてこのリストを更新する

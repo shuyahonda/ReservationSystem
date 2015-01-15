@@ -104,6 +104,7 @@ public class Reserve implements Serializable {
         //String url = "http://10.0.2.2:8080/rs/reserve/delete";    // Emulator
         //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
         String url = "http://172.30.54.138:8080/rs/reserve/delete"; // 実機から
+        //String url =  "http://android.sayo.se.shibaura-it.ac.jp/ReservationSystemServlet/reserve/delete"; //本番用
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -169,6 +170,7 @@ public class Reserve implements Serializable {
         //String url = "http://10.0.2.2:8080/rs/reserve";    // Emulator
         //String url = "http://172.30.60.156:8080/ReservationSystemServer/reserve"; //竹内
         String url = "http://172.30.54.138:8080/rs/reserve"; // 実機から
+        //String url =  "http://android.sayo.se.shibaura-it.ac.jp/ReservationSystemServlet/reserve"; //本番用
 
         AsyncHttpClient client = new AsyncHttpClient();
 

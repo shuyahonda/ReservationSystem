@@ -25,7 +25,6 @@ import jp.ac.shibaura_it.sayo.se.reservationsystem.user.R;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
-
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
